@@ -1,0 +1,549 @@
+/* pages/release_resume/release_resume.wxss */
+@import '../position_content/position_content.wxss';
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+.mask-content {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 750rpx;
+  background: white;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+  z-index: 11;
+}
+
+.show .mask-content {
+  transform: translateY(0);
+}
+
+.show .mask {
+  display: block;
+}
+
+.mask-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 30rpx 40rpx 30rpx;
+}
+
+.mask-header image{
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.mask-body{
+  padding: 20rpx 100rpx 40rpx 100rpx;
+  line-height: 40rpx;
+}
+
+.mask-body text{
+  font-size: 20rpx;
+  font-weight:400;
+}
+
+.mask-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 140rpx 120rpx 140rpx;
+}
+
+.mask-image{
+  text-align: center;
+}
+
+.mask-image text{
+  font-size: 20rpx;
+  line-height: 40rpx;
+}
+
+.mask-img image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.mask-share{
+  background: #fff;
+}
+.release {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.avatar {
+  margin-right: 21rpx;
+}
+
+.avatar image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 21rpx;
+  border-radius: 120rpx;
+}
+
+.avatar text {
+  line-height: 120rpx;
+  color: #808080;
+}
+
+.right {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.resume {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  height: 80rpx;
+  border-bottom: 2rpx solid #ccc;
+  padding: 0rpx 20rpx;
+}
+
+.resume-right{
+  display: flex;
+  align-items: center;
+}
+
+.resume-right text {
+  font-size: 20rpx;
+  color: #808080;
+  margin-right: 10rpx;
+  line-height: 20rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.btn-area {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.btn-area .reset {
+  background: #FFFFFF;
+  color: #2bbcd9;
+  width: 50%;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+
+.btn-area .submit {
+  background: #2bbcd9;
+  color: #fff;
+  width: 50%;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+
+.btn-area-cancel {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.btn-area-cancel .cancel {
+  width: 100%;
+  background: #2bbcd9;
+  color: #fff;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+
+.btn-area1 {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.btn-area1 .reset {
+  background: #FFFFFF;
+  color: #2bbcd9;
+  width: 50%;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+
+.btn-area1 .submit {
+  background: #2bbcd9;
+  color: #fff;
+  width: 50%;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+.share-pop-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8;
+  bottom: 0;
+}
+
+.tempFilePaths {
+  width: 100%;
+}
+
+.share-pop {
+  width: 100%;
+  height: auto;
+  max-height: 780rpx;
+  min-height: 258rpx;
+  background: #fff;
+  position: fixed;
+  z-index: 9;
+  bottom: 100rpx;
+}
+
+.share-pop .share-info {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+  height: 225rpx;
+  overflow: hidden;
+  margin-top: 50rpx;
+  margin-bottom: 41.5rpx;
+}
+
+.sharebtn {
+  top: 75rpx;
+  background: none !important;
+  font-size: 32rpx;
+  color: #fff !important;
+  border-radius: 0%;
+  width: 175rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  float: right;
+  background: #fff;
+  border-bottom: 0px solid #fafafa;
+  margin-left: 10%;
+}
+
+.sharebtn::after {
+  border: none;
+  border-radius: 0%;
+}
+
+.savesharebtn {
+  top: 75rpx;
+  background: none !important;
+  font-size: 32rpx;
+  color: #fff !important;
+  border-radius: 0%;
+  width: 175rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  float: right;
+  background: #fff;
+  border-bottom: 0px solid #fafafa;
+}
+
+.savesharebtn::after {
+  border: none;
+  border-radius: 0%;
+}
+
+.avatarbtn {
+  top: 75rpx;
+  background: none !important;
+  font-size: 32rpx;
+  color: #fff !important;
+  border-radius: 0%;
+  width: 175rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  float: right;
+  background: #fff;
+  border-bottom: 0px solid #fafafa;
+  margin-right: 10%;
+}
+
+.avatarbtn::after {
+  border: none;
+  border-radius: 0%;
+}
+
+.sharebtn_image {
+  width: 128rpx;
+}
+
+.sharebtn_text {
+  width: 150rpx;
+  margin-bottom: 2rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #555;
+}
+
+.time-component {
+  margin-top: 60rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.input{
+  background: #fff;
+  height: 80rpx;
+}
+
+.input input{
+  height: 80rpx;
+  padding: 0rpx 20rpx;
+}
+
+.placeholder {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.icon {
+  line-height: auto;
+  width: 40rpx;
+}
+
+.icon image {
+  vertical-align: middle;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.hd {
+  text-align: center;
+  width: 120rpx;
+  margin-left: -20rpx;
+}
+
+.date {
+  position: absolute;
+  right: 120rpx;
+  width: 140px;
+}
+
+.line {
+  z-index: 10;
+  position: absolute;
+  right: 100rpx;
+  width: 10rpx;
+}
+
+.time {
+  position: absolute;
+  right: 0;
+}
+
+.multiSelector {
+  padding-left: 106rpx;
+}
+
+.showToast {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.show {
+  width: 60%;
+  background: #fff;
+}
+
+.textarea-input {
+  width: 100%;
+  height: 400rpx;
+}
+
+.personal {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background: #fff;
+  padding: 40rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.personal-text {
+  line-height: 120rpx;
+}
+
+.personal-right {
+  display: flex;
+  align-items: center;
+}
+
+.personal-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 30rpx;
+  border-radius: 50%;
+}
+
+.resume-right-sex{
+  display: flex;
+
+}
+
+radio .wx-radio-input {
+  border-radius: 50%;
+  height: 10rpx;
+  width: 10rpx;
+  background: #555;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 10rpx;
+  height: 10rpx;
+  opacity: 0;
+  text-align: center;
+  font-size: 0rpx;
+  background-color: rgba(255, 211, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-text {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.btn-area .sure{
+  background: #2bbcd9;
+  color: #fff;
+  height: 100rpx;
+  width: 50%;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}
+
+.btn{
+  background: #2bbcd9;
+  color: #fff;
+  height: 100rpx;
+  width: 100%;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}
+
+.birthBox{
+  height: 400rpx;
+}
+
+.picker-view-column{
+  text-align: center;
+  line-height: 66rpx;
+}
+
+.job{
+  background: #fff;
+}
+
+.job-search{
+  padding: 20rpx 20rpx;
+  line-height: 80rpx;
+}
+
+.job-search input{
+  text-align: center;
+  background: #F2F2F2;
+  border-radius: 25rpx;
+  font-size: 20rpx;
+  color: #808080;
+}
+
+.job-list{
+  line-height: 80rpx;
+  padding: 0rpx 20rpx;
+  border-top: 2rpx solid #ccc;
+}
+
+.job-title{
+  color: #2bbcd9;
+}
+
+.releases{
+  background: #fff;
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.release-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.release-name{
+  display: flex;
+}
+
+.release-s{
+  margin-right: 40rpx;
+}
+
+.release-footer{
+  width: 100%;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 2rpx solid #2bbcd9;
+  line-height: 80rpx;
+  margin-top: 40rpx;
+}
+
+.release-footer text{
+  font-size: 24rpx;
+}
+
+.textarea{
+  background: #fff;
+  padding: 20rpx;
+}

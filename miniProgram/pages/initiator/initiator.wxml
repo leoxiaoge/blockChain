@@ -1,0 +1,95 @@
+<!--pages/initiator/initiator.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="bgimages">
+      <image src="http://lcbblog.com/images/answer/img4@2x.png" mode='widthFix'></image>
+      <view class="avatar">
+        <image src="{{head_pic?head_pic:'head_pic'}}" mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+  <view class="nav-warp-flex">
+    <view class="nav-warp">
+      <view class="tab">
+        <block wx:for="{{navItem}}" wx:key="index">
+          <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+            <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+          </view>
+        </block>
+        <view class="line"></view>
+      </view>
+    </view>
+    <block wx:if="{{showItem == 1}}">
+      <view class="community" wx:for="{{events}}" wx:key="*this">
+        <view class="community-body" data-id="{{item.event_id}}" data-title="{{item.event_title}}" bindtap="communityDetails">
+          <view class="community-image">
+            <image src="{{item.event_img}}" mode='widthFix'></image>
+          </view>
+          <view class="community-right">
+            <view class="community-t">
+              <text class="community-title">{{item.event_title}}</text>
+              <text class="community-num">报名人数:{{item.apply_num}}/{{item.join_num}}</text>
+            </view>
+            <block wx:if="{{item.end_time < newdata}}">
+              <view class="community-end">
+                <text>已结束{{item.end_time}}</text>
+              </view>
+            </block>
+            <view class="community-price">费用:{{item.event_fee}}元/人</view>
+            <view class="community-place">活动地点：</view>
+            <view class="community-place-t">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</view>
+          </view>
+        </view>
+        <view class="community-time">
+          <text>起止时间：{{item.start_time}}-{{item.end_time}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{showItem == 2}}">
+      <view class="good-grid">
+        <view class="body">
+          <block wx:for="{{courses}}" wx:for-index="index" wx:for-item="i" wx:key="id">
+            <view class="itemes {{index != 0 ? 'items' : ''}}">
+              <view class="content">
+                <view class='area' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">
+                  <view class='area-img'>
+                    <image class="images" src="{{i.courses.courses_img}}" background-size="cover"></image>
+                  </view>
+                  <view class='area-words'>
+                    <text class='area-title'>{{i.courses.courses_title}}</text>
+                    <view class='area-name'>授课老师：{{i.courses.courses_teacher}}</view>
+                    <view class='area-name'>课时数量：{{i.courses.courses.length}}课时</view>
+                    <view class='area-name'>已报名：{{i.courses.apply_num}}人</view>
+                    <view class='area-names'>
+                      <text class='area-price'>￥</text>
+                      <text class='pic'>{{i.courses.courses_fee}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="area-btn">
+                <block wx:if="{{i.courses.courses_status == 0}}">
+                  <block wx:if="{{user_type == 0}}">
+                    <button class='area-purchase signUp btn' data-id="{{i.courses.courses_id}}" bindtap="signUp">立即报名</button>
+                    <button class='area-purchase  freeTrial btn' data-id="{{i.courses.courses_id}}" bindtap="signUp">免费试看</button>
+                  </block>
+                  <block wx:elif="{{user_type == 1}}">
+                    <button class='area-purchase signUp btn' data-id="{{i.courses.courses_id}}" bindtap="content">立即报名</button>
+                    <button class='area-purchase  freeTrial btn' data-id="{{i.courses.courses_id}}" bindtap="content">免费试看</button>
+                  </block>
+                  <block wx:else="{{user_type == 2}}">
+                    <button class='area-purchase signUp btn' bindtap='onLogin'>立即报名</button>
+                    <button class='area-purchase  freeTrial btn' bindtap='onLogin'>免费试看</button>
+                  </block>
+                </block>
+                <block wx:else>
+                  <button class='area-purchase signUp btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">继续学习</button>
+                </block>
+              </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<!--pages/ucenter/recruit/recruit.wxml-->
+<view class="container">
+  <view class="college" wx:for="{{posts}}" wx:key="id">
+    <view class="college-body-new" bindtap="collegeDetails" data-id="{{showItem}}" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">
+      <view class="college-image">
+        <image src="{{item.company.company_logo}}"></image>
+      </view>
+      <view class="college-right">
+        <view class="college-t">
+          <text class="college-title">{{item.posts_name}}</text>
+          <text class="college-salary">{{item.min_salary}}K-{{item.max_salary}}K</text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">{{item.company.company_name}}</text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">{{item.experience}}</text>
+          <text class="college-title">{{item.education}}</text>
+          <text class="college-time">{{item.add_time}}</text>
+        </view>
+        <view class="college-t">
+          <text class="college-address">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="college-footer">
+      <view class="college-display">
+        
+      </view>
+      <view class="delete-edit">
+        <button class="btn delete" bindtap="resumeDelete" data-posts_id="{{item.posts_id}}">删除</button>
+        <button class="btn edit" bindtap="releaseEdit" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">编辑</button>
+      </view>
+    </view>
+  </view>
+  <view class="order_none" wx:if="{{posts.length <= 0 ? true:false}}">
+    <image src="/images/recruit.png" class="order_none_img" mode='widthFix'></image>
+    <text class="order_none_tex">哎呀,暂时还没有招聘呢</text>
+    <button class="btn setting" type="primary" bindtap="release">去发布职位</button>
+  </view>
+</view>

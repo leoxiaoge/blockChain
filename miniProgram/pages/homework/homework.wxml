@@ -1,0 +1,41 @@
+<!--pages/homework/homework.wxml-->
+<view class="container">
+  <block wx:if="{{answer_status == 0}}">
+    <view class="header">
+      <view class="h1">知识点考察</view>
+      <view class="span">请根据今日所学，完成以下习题</view>
+    </view>
+    <view class="homework" wx:for="{{questions}}" wx:key="id">
+      <view class="title">{{index + 1}}、{{item.title}}</view>
+      <view class="radio">
+        <radio-group class="radio-group" bindchange="radioChange1" data-id="{{index}}" data-correct="{{item.correct}}">
+          <label class="radio" wx:for="{{item.extra}}" wx:for-index="idx" wx:for-item="i" wx:key="id" data-idx="{{idx}}" data-id="{{item.question_id}}">
+            <radio class="radio-icon" value="{{i.name}}" color="#2BBCD9" checked="{{i.checked}}" disabled="{{i.checked}}" />
+            <text class="radio-text">{{i.name}}</text>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="submission">
+      <button class="btn" bindtap="submission">提交</button>
+    </view>
+  </block>
+  <block wx:if="{{answer_status == 1}}">
+    <view class="homework" wx:for="{{questions}}" wx:key="*this">
+      <view class="title">{{index + 1}}.{{item.title}}</view>
+      <view class="radio">
+        <radio-group class="radio-group">
+          <label class="radio" wx:for="{{item.extra}}" wx:key="*this" wx:for-index="idx" wx:for-item="iitem">
+            <radio class="radio-icon" value="{{iitem.key}}" checked="{{item.key == iitem.value?'true': ''}}" disabled="true" color="{{item.answer == item.key ? '#00D56E' : '#FF0000'}}" />
+            <text class="radio-text">{{iitem.name}}</text>
+          </label>
+        </radio-group>
+      </view>
+      <view>
+        <view>您的答案：{{item.answer ==  item.key ? '正确' : '错误'}}</view>
+        <view>正确答案：{{item.answer}}</view>
+        <view>解析：{{item.description}}</view>
+      </view>
+    </view>
+  </block>
+</view>

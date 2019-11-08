@@ -1,0 +1,53 @@
+<!--pages/ucenter/activity/activity.wxml-->
+<view class="nav-warp">
+  <view class="tab">
+    <block wx:for="{{navItem}}" wx:key="index">
+      <view data-id="{{index}}" class="tab-txt {{showItem == index ? 'active' : '' }} " style="position: relative;">
+        <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+      </view>
+    </block>
+    <view class="line"></view>
+  </view>
+</view>
+<view class="hidden" hidden="{{!hidden}}">
+  <view class="hidden-drop">
+    <view class="hidden-free {{is_free == (index+1)? 'hidden-free-bg': ''}} {{index == 1? 'hidden-pay': ''}} " wx:for="{{free}}" bindtap="isFree" data-is_free="{{index + 1}}" data-item='{{item}}'>
+      <view>{{item}}</view>
+    </view>
+  </view>
+</view>
+<view hidden="{{!hidden}}">
+  <view class="hidden-box" bindtouchstart='screen'></view>
+</view>
+<view class="community" wx:for="{{events}}" wx:key="id">
+  <view class="community-body" data-id="{{item.event_id}}" data-title="{{item.event_title}}" bindtap="communityDetails">
+    <view class="community-image">
+      <image src="{{item.event_img}}" mode='widthFix'></image>
+    </view>
+    <view class="community-right">
+      <view class="community-t">
+        <text class="community-title">{{item.event_name}}</text>
+        <text class="community-num">报名人数:{{item.apply_num}}/{{item.join_num}}</text>
+      </view>
+      <block wx:if="{{showItem == 0}}">
+        <view class="community-kong"></view>
+      </block>
+      <block wx:else>
+        <view class="community-end">
+          <text>已结束</text>
+        </view>
+      </block>
+      <view class="community-price">费用:{{item.event_fee}}元/人</view>
+      <view class="community-place">活动地点：</view>
+      <view class="community-place-t">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</view>
+    </view>
+  </view>
+  <view class="community-time">
+    <text>起止时间：{{item.start_time}}-{{item.end_time}}</text>
+  </view>
+</view>
+<view class="order_none" wx:if="{{events.length <= 0 ? true:false}}">
+  <image src="/images/activity.png" class="order_none_img" mode='widthFix'></image>
+  <text class="order_none_tex">哎呀,您还没有{{navItem[showItem]}}呢</text>
+  <button class="btn setting" type="primary" bindtap="release">去发布活动</button>
+</view>

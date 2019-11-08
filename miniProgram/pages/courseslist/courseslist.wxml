@@ -1,0 +1,57 @@
+<!--pages/courseslist/courseslist.wxml-->
+<view class="container">
+  <view class="good-grid">
+    <block>
+      <view class="body">
+        <block wx:for="{{lists}}" wx:for-index="index" wx:for-item="i" wx:key="id">
+          <view class="itemes {{index != 0 ? 'items' : ''}}">
+            <view class="content">
+              <view class='area' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">
+                <view class='area-img'>
+                  <image class="images" src="{{i.courses_img}}" background-size="cover" mode='widthFix'></image>
+                </view>
+                <view class='area-words'>
+                  <text class='area-title'>{{i.courses_title}}</text>
+                  <view class='area-name'>授课老师：{{i.courses_teacher}}</view>
+                  <view class='area-name'>课时数量：{{i.classes.length}}课时</view>
+                  <view class='area-name'>已报名：{{i.apply_num}}人</view>
+                  <view class='area-names'>
+                    <text class='area-price'>￥</text>
+                    <text class='pic'>{{i.courses_fee}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="area-btn">
+                <block wx:if="{{i.courses_status == 0}}">
+                  <block wx:if="{{user_type == 0}}">
+                    <button class='area-purchase signUp btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="signUp">立即报名</button>
+                    <button class='area-purchase  freeTrial btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="signUp">免费试看</button>
+                  </block>
+                  <block wx:elif="{{user_type == 1}}">
+                    <button class='area-purchase signUp btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">立即报名</button>
+                    <button class='area-purchase  freeTrial btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">免费试看</button>
+                  </block>
+                  <block wx:else="{{user_type == 2}}">
+                    <button class='area-purchase signUp btn' bindtap='onLogin'>立即报名</button>
+                    <button class='area-purchase  freeTrial btn' bindtap='onLogin'>免费试看</button>
+                  </block>
+                </block>
+                <block wx:else>
+                  <button class='area-purchase  freeTrial btn' data-id="{{i.courses_id}}" data-title="{{i.courses_title}}" bindtap="content">继续学习</button>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{none}}">
+    <block wx:if="{{lists.length <= 0 ? true:false}}">
+      <view class="order_none">
+        <image src="{{icon}}" class="order_none_img" mode='widthFix'></image>
+        <text class="order_none_tex">哎呀,暂时还没有{{title}}呢</text>
+      </view>
+    </block>
+  </block>
+</view>

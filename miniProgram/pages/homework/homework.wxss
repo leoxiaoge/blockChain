@@ -1,0 +1,85 @@
+/* pages/homework/homework.wxss */
+page{
+  background: #fff;
+}
+
+.header{
+  text-align: center;
+  padding: 20rpx 0rpx;
+  background: #fff;
+}
+
+.header .h1{
+  font-size:28rpx;
+  font-weight:400;
+}
+
+.header .span{
+  font-size:24rpx;
+  font-weight:400;
+}
+
+.homework{
+  border-top: 2rpx solid #ccc;
+  background: #fff;
+  padding: 20rpx 30rpx
+}
+
+radio .wx-radio-input{
+  border-radius: 50%;
+  height: 18rpx;
+  width: 18rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before{
+  border-radius: 50%;
+   width: 18rpx; 
+   height: 18rpx; 
+   opacity: 0;
+   text-align: center;
+   font-size:0rpx;
+   background-color: rgba(255, 211, 0, 0.5); 
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+radio {
+  -webkit-tap-highlight-color:transparent;
+  display:inline-block;  
+  border-radius: 50%;
+  width: 18rpx;
+  height: 18rpx;
+  font-size: 0;
+}
+
+.radio-group{
+  margin: 4rpx 0rpx 4rpx 0rpx;
+}
+
+.radio{
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.radio-text{
+  padding-left: 20rpx;
+}
+
+.submission{
+  padding: 30rpx 0rpx;
+  background: #fff;
+}
+
+.submission .btn{
+  width: 60%;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #2BBCD9;
+  color: #fff;
+  line-height: 60rpx;
+  font-size: 24rpx;
+}
+
+.submission .btn::after{
+  border: 0
+}

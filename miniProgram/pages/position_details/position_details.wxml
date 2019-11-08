@@ -1,0 +1,39 @@
+<!--pages/position_details/position_details.wxml-->
+<view class="container">
+  <import src="../position_content/position_content.wxml" />
+  <template is="position" data="{{posts:posts,postsDetail:postsDetail,postsTeamDetail:postsTeamDetail}}" />
+  <block wx:if="{{recommend.length > 0}}">
+    <view class="recommend">
+      <view class="recommend-name">推荐职位</view>
+      <view class="college" wx:for="{{recommend}}" wx:key="id">
+        <view class="college-body" bindtap="collegeDetails" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">
+          <view class="college-image">
+            <image src="{{item.company.company_logo}}"></image>
+          </view>
+          <view class="college-right">
+            <view class="college-t">
+              <text class="college-title">{{item.posts_name}}</text>
+              <text class="college-salary">{{item.min_salary}}K-{{item.max_salary}}K</text>
+            </view>
+            <view class="college-t">
+              <text class="college-title">{{item.company.company_name}}</text>
+            </view>
+            <view class="college-t">
+              <text class="college-title">{{item.experience}}</text>
+              <text class="college-title">{{item.education}}</text>
+              <text class="college-time">{{item.add_time}}</text>
+            </view>
+            <view class="college-t">
+              <text class="college-address">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="bottom"></view>
+  <cover-view class="btn-bottom">
+    <button class="btn-bottom-left" bindtap="collect">{{is_collect == 0? '收藏职位':'已收藏职位'}}</button>
+    <button class="btn-bottom-right" bindtap="postsSend">投递简历</button>
+  </cover-view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/ucenter/distribution_data/distribution_data.wxml-->
+<view class="container">
+  <view class="nav-warp">
+    <view class="tab">
+      <block wx:for="{{navItem}}" wx:key="index">
+        <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+          <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+        </view>
+      </block>
+      <view class="line"></view>
+    </view>
+  </view>
+  <view class="data" wx:for="{{data}}" wx:key="id">
+    <view class="data-image">
+      <view>
+        <image src="{{item.head_pic}}"></image>
+      </view>
+      <view class="data-name">{{item.nickname}}</view>
+    </view>
+    <block wx:if="{{item.shop_order_details_courses.length > 0}}">
+      <view class="data-header">已报名活动</view>
+      <block wx:for="{{item.shop_order_details_courses}}" wx:for-item="i">
+        <view class="data-title">{{i.shop_name}}</view>
+      </block>
+    </block>
+    <block wx:if="{{item.shop_order_details_events.length > 0}}">
+      <view class="data-header">已购买课程</view>
+      <block wx:for="{{item.shop_order_details_events}}" wx:for-item="i">
+        <view class="data-title">{{i.shop_name}}</view>
+      </block>
+    </block>
+  </view>
+  <view class="order_none" wx:if="{{data.length <= 0 ? true:false}}">
+    <image src="/images/fans.png" class="order_none_img" mode='widthFix'></image>
+    <text class="order_none_tex">哎呀,您还没有{{navItem[showItem - 1]}}呢</text>
+  </view>
+</view>

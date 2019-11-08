@@ -1,0 +1,166 @@
+<!--pages/details/details.wxml-->
+<view class="container">
+  <view class="swiper-box">
+    <image bindtap="previewImage" data-list="{{goods.gallery}}" data-src="{{courses.courses_img}}" src="{{courses.courses_img}}" background-size="cover" mode='widthFix'></image>
+  </view>
+  <view class="goods_name">
+    <view class="goods_name_left">
+      <view class="teacher">授课老师：{{courses.courses_teacher}}</view>
+      <view class="number">课时数量：{{courses.classes.length}}课时</view>
+      <view class="registered">已报名：{{courses.apply_num}}人</view>
+      <view class="price">￥{{courses.courses_fee}}</view>
+    </view>
+    <view class="area-btn">
+      <block wx:if="{{courses.courses_status == 0}}">
+        <block wx:if="{{user_type == 0}}">
+          <button class='area-purchase signUp btn' data-id="{{i.courses_id}}" bindtap="signUp">立即报名</button>
+          <button class='area-purchase  freeTrial btn' data-id="{{i.courses_id}}" bindtap="signUp">免费试看</button>
+        </block>
+        <block wx:elif="{{user_type == 1}}">
+
+        </block>
+        <block wx:else="{{user_type == 2}}">
+          <button class='area-purchase signUp btn' bindtap='onLogin'>立即报名</button>
+          <button class='area-purchase  freeTrial btn' bindtap='onLogin'>免费试看</button>
+        </block>
+      </block>
+    </view>
+  </view>
+  <view scroll-x="true" class="navs" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{false}}">
+    <block wx:for="{{brands}}" wx:for-index="idx" wx:for-item="i" wx:key="*this">
+      <view class="nav-items item {{current == idx ? 'actives':''}}" data-current="{{idx}}" bindtap="switchNav">
+        <text class="name">{{i}}</text>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{current == 0}}">
+    <view class="detail">
+      <import src="/lib/wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:coursesDetail.nodes}}" />
+    </view>
+    <view class="comments">
+      <view class="comment">
+        <view class="comment-img">
+          <image src="/images/comment.png" mode="widthFix"></image>
+          <text>共{{courses.comment.length > 999 ? '999+' : courses.comment.length}}条评论</text>
+        </view>
+        <view class="message" bindtap="replylayer">
+          <image src="/images/message.png" mode="widthFix"></image>
+        </view>
+      </view>
+      <block wx:if="{{!replyLayer}}">
+        <view class="item" wx:for="{{courses.comment}}" wx:key="id">
+          <view class="info">
+            <view class="head_pic" bindtap="subreplylayer" data-comment_id='{{item.comment_id}}' data-nickname='{{item.user.nickname}}'>
+              <image src="{{item.user.head_pic}}"></image>
+            </view>
+            <view class="user">
+              <view class="nick">
+                <view class="nickname">{{item.user.nickname}}</view>
+                <view class="time">{{item.comment_time}}</view>
+              </view>
+              <view class="content">
+                {{item.content}}
+              </view>
+            </view>
+            <view class="reply" wx:for="{{item.subcat}}" wx:for-item="i" wx:key="id">
+              <text class="replRrespondent">{{i.user.nickname}}:</text>
+              <text class="replyNickname">@{{item.user.nickname}}</text>
+              <text class="replyContent">{{i.content}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="comment-item">
+          <block wx:if="{{nickname}}">
+            <view class="comment-nickname">@{{nickname}}</view>
+          </block>
+          <view class="input-text-box">
+            <textarea class="textarea" name="content" value='{{concent}}' bindblur="textContent" placeholder="写点什么吧..." auto-focus />
+          </view>
+          <view class="input-text-btn">
+            <button type="primary" bindtap='formSubmit'>发布评论</button>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{current == 1}}">
+    <view class="goods-attr">
+      <scroll-view class="weui-cell-third" scroll-y scroll-into-view="{{to}}" scroll-with-animation="true">
+          <view class="new">
+            <view class="weui-cell-video">
+              <video id="myVideo" src="{{classes[idx].classes_path}}" data-id="{{classes[idx].classes_id}}" bindplay="bindplay" bindended="bindended" binderror="videoErrorCallback" danmu-list="{{danmuList}}" bindtimeupdate="bindtimeupdate" show-center-play-btn
+                controls></video>
+              <view class="weui-cell-play">
+                <view class="weui-cell-image">
+                  <image src='/images/play.png'></image>
+                  <text>{{classes[idx].watch_num}}</text>
+                </view>
+                <view class="weui-cell-image">
+                  <image src='/images/playsee.png'></image>
+                  <text>{{courses.courses_status == 0?'试看':'观看'}}</text>
+                </view>
+              </view>
+            </view>
+            <block wx:if="{{classes[idx].questions.length > 0}}">
+              <view class="weui-cell-homework" data-classes_id="{{classes[idx].classes_id}}" bindtap="homework">
+                <view class="weui-cell-image">
+                  <image src="/images/homework.png"></image>
+                  <text>课后作业：知识点考察</text>
+                </view>
+                <view class="weui-cell-right">
+                  <image src="/images/right.png"></image>
+                </view>
+              </view>
+            </block>
+            <block wx:if="{{classes[idx].work_path}}">
+              <view class="weui-cell-homework" data-txt="{{classes[idx].work_path}}" bindtap="DownloadTask">
+                <view class="weui-cell-image">
+                  <image src="/images/DownloadTask.png"></image>
+                  <text>下载课件</text>
+                </view>
+                <view class="weui-cell-right">
+                  <image src="/images/right.png"></image>
+                </view>
+              </view>
+            </block>
+            <view class="weui-cell-homework">
+              <view class="weui-cell-title-name">
+                <text>{{classes[idx].classes_title}}</text>
+              </view>
+            </view>
+            <view class="weui-cell-scroll">
+              <view class="weui-cell-header">
+                <view class="weui-cell-left">选集</view>
+                <view class="weui-cell-num-right">{{classes.length? '共' + classes.length + '集':''}}</view>
+              </view>
+              <view class="navigation">
+                <scroll-view scroll-x="true" class="nav-scroll" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+                  <block wx:for="{{classes}}" wx:key="id">
+                    <view id="{{index}}" bindtap="bindtap" class="nav-item nav-item-{{index}} {{index==idx ? 'active' : ''}}">
+                      {{index + 1}}
+                    </view>
+                  </block>
+                </scroll-view>
+              </view>
+            </view>
+          </view>
+      </scroll-view>
+    </view>
+  </block>
+  <view class="bottom"></view>
+  <block wx:if="{{courses.courses_status == 0}}">
+    <view class="bottom-btn {{current == 0 ? 'bottom-btn-axis' : ''}}">
+      <view class="r" bindtap="addToCart" wx:if="{{!soldout}}" wx:if="{{!isGroupon}}">价格：￥{{courses.courses_fee}}</view>
+      <view class="c" bindtap="addFast" wx:if="{{!soldout}}">{{isGroupon?'无法报名':'立即报名'}}</view>
+      <view class="n" wx:if="{{soldout}}">无法报名</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="bottom-btn {{current == 0 ? 'bottom-btn-axis' : ''}}" wx:if="{{current == 0}}">
+      <view class="c" data-current="1" bindtap="switchNav">继续学习</view>
+    </view>
+  </block>
+</view>

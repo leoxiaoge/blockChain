@@ -1,0 +1,281 @@
+/* pages/position_content/position_content.wxss */
+
+.position-header {
+  padding: 22rpx 20rpx 46rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.position-salary {
+  float: right;
+  font-size: 30rpx;
+}
+
+.position-name {
+  margin-top: 18rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.position-experiencen-education {
+  display: flex;
+  align-items: center;
+}
+
+.position-experience {
+  font-size: 24rpx;
+}
+
+.position-education {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.position-address {
+  font-size: 24rpx;
+}
+
+.position-body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.position-avatar image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.position-user {
+  margin-left: 20rpx;
+}
+
+.position-username {
+  font-size: 24rpx;
+}
+
+.position-position {
+  font-size: 20rpx;
+}
+
+.position-content {
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.position-team {
+  background: #fff;
+  padding: 20rpx 20rpx 38rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.position-team-name {
+  line-height: 60rpx;
+}
+
+.position-team-content {
+  font-size: 24rpx;
+}
+
+.position-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.position-left {
+  display: flex;
+  align-items: center;
+}
+
+.position-company {
+  margin-left: 20rpx;
+}
+
+.position-company-name {
+  font-size: 24rpx;
+}
+
+.position-financing {
+  font-size: 20rpx;
+}
+
+.position-right image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 46rpx 20rpx 42rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-image image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.resume-user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.resume-user {
+  font-size: 30rpx;
+}
+
+.resume-state {
+  font-size: 24rpx;
+  margin-left: 60rpx;
+}
+
+.resume-sex {
+  font-size: 24rpx;
+}
+
+.resume-age {
+  margin-left: 40rpx;
+  font-size: 24rpx;
+}
+
+.resume-education {
+  margin-left: 40rpx;
+  font-size: 24rpx;
+}
+
+.resume-experience {
+  margin-left: 40rpx;
+  font-size: 24rpx;
+}
+
+.resume-user-city {
+  font-size: 24rpx;
+}
+
+.resume-user-mobile {
+  margin-left: 40rpx;
+  font-size: 24rpx;
+}
+
+.resume-user-email {
+  margin-left: 40rpx;
+  font-size: 24rpx;
+}
+
+.resume-duty {
+  background: #fff;
+  padding: 40rpx 20rpx 10rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-duty-content {
+  display: flex;
+  align-items: center;
+  line-height: 80rpx;
+}
+
+.resume-duty_name {
+  font-size: 24rpx;
+}
+
+.resume-city {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.resume-min_salary-max_salary {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.resume-educations {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-education-content {
+  display: flex;
+  align-items: center;
+  line-height: 80rpx;
+}
+
+.resume-school_name {
+  font-size: 24rpx;
+}
+
+.resume-major {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.resume-diploma {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.resume-start_time {
+  font-size: 24rpx;
+  margin-left: 40rpx;
+}
+
+.resume-works {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-work {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 60rpx;
+}
+
+.resume-work_content {
+  margin-top: 4rpx;
+}
+
+.resume-project {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-project-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-languages {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-introduce {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.resume-skills {
+  background: #fff;
+  padding: 40rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}

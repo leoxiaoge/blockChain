@@ -1,0 +1,21 @@
+<!--pages/payment/payment.wxml-->
+<view class="container">
+  <view class="payment">
+    <view class="payment-header">
+      <image src="{{courses.courses_img}}" mode='widthFix'></image>
+      <text class="payment-title">{{courses.courses_title}}</text>
+    </view>
+    <view class="payment-body">
+      <text>授课老师</text>
+      <text>{{courses.courses_teacher}}</text>
+    </view>
+    <view class="payment-price">
+      <text>价格</text>
+      <text>￥{{courses.courses_fee}}</text>
+    </view>
+  </view>
+</view>
+<view class="bottom-btn">
+  <view class="r" wx:if="{{!soldout}}" wx:if="{{!isGroupon}}">价格：￥{{courses.courses_fee}}</view>
+  <view class="c" bindtap="addFast" wx:if="{{!soldout}}">{{isGroupon?'立即支付':'立即支付'}}</view>
+</view>

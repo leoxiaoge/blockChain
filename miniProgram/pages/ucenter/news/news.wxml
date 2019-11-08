@@ -1,0 +1,40 @@
+<!--pages/ucenter/news/news.wxml-->
+<view class="container">
+  <view wx:for="{{list}}" wx:key="{{index}}" class="item">
+    <block wx:if="{{item.message_type == 'resume_apply'}}">
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt news" data-id="{{item.incident_id}}" data-name="{{item.name}}" data-send_time="{{item.send_time}}" data-content="{{item.content}}" bindtap="resumeApply">
+        <view class="news-images">
+          <image src="{{item.avatar}}"></image>
+        </view>
+        <view class="news-content">
+          <view class="news-header-content">
+            {{item.name}}
+          </view>
+          <view class="news-boby-content">
+            {{item.send_time}}{{item.content}}
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt news" data-name="{{item.name}}" data-send_time="{{item.send_time}}" data-content="{{item.content}}" bindtap="showModal">
+        <view class="news-images">
+          <image src="{{item.avatar}}"></image>
+        </view>
+        <view class="news-content">
+          <view class="news-header-content">
+            {{item.name}}
+          </view>
+          <view class="news-boby-content">
+            {{item.send_time}}{{item.content}}
+          </view>
+        </view>
+      </view>
+    </block>
+    <view data-index="{{index}}" data-id="{{item.id}}" bindtap="delItem" class="inner del">删除</view>
+  </view>
+  <view class="order_none" wx:if="{{list.length <= 0 ? true:false}}">
+    <image src="/images/nonews.png" class="order_none_img" mode='widthFix'></image>
+    <text class="order_none_tex">哎呀,暂时还没有消息呢</text>
+  </view>
+</view>

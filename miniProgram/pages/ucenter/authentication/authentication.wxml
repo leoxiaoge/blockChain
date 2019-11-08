@@ -1,0 +1,247 @@
+<block wx:if="{{add}}">
+  <view class="add-address">
+    <view class="add-form">
+      <view class="form-item">
+        <view class="item">姓名</view>
+        <input class="input" bindinput="bindinputName" placeholder="请填写您的姓名" maxlength='8' value="{{address.name}}" auto-focus/>
+      </view>
+      <view class="form-item">
+        <view class="item">手机号</view>
+        <input class="input" bindinput="bindinputMobile" value="{{address.mobile}}" maxlength='11' placeholder="请填写您的手机号码" />
+      </view>
+      <view class="form-item">
+        <view class="item">商铺名称</view>
+        <input class="input" bindinput="bindinputShop" value="{{address.shop}}" maxlength='11' placeholder="请填写您的商铺名称" />
+      </view>
+      <view class="form-item">
+        <view class="item">类型</view>
+        <input class="input" value="{{name}}" disabled="true" bindtap="openType" placeholder="请选择您的商铺类型" />
+      </view>
+      <view class="form-item">
+        <view class="item">所在地区</view>
+        <input class="input" value="{{address.provinceName +  address.cityName + address.areaName}}" disabled="true" bindtap="chooseRegion" placeholder="请选择您所在的省/市/区" />
+      </view>
+      <view class="form-textarea">
+        <view class="itemt">详细地址</view>
+        <textarea class="textarea" bindblur="bindTextAreaBlur" placeholder="请填写您的详细地址" name="textarea" />
+      </view>
+    </view>
+
+
+
+
+    <view class="upload">
+      <view class='uploadImg' wx:if="{{hasPicture == false}}">
+        <view class="weui-uploader__input-box" bindtap="chooseImage">
+          <text class="weui-text">添加图片</text>
+        </view>
+      </view>
+      <view class="weui-uploader__files" id="uploaderFiles" wx:else>
+        <block>
+          <view class="weui-uploader__file" bindtap="chooseImage">
+            <image class="weui-uploader__img" src="{{picUrls}}" data-src='{{picUrls}}' mode="aspectFill" />
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="oneImg">仅限1张</view>
+    <view class="explain">
+      <view class="explain-img">
+        <image src='../../../images/explain.png'></image>
+      </view>
+      <view class='explain-text'>
+        <text>为了保证您的利益，请如实上传营业执照或店铺照片，我们将 在24小时内完成你的认证。</text>
+      </view>
+    </view>
+    <view class="btns">
+      <button class="save" bindtap="saveAddress">提交</button>
+    </view>
+
+  </view>
+
+</block>
+
+
+<view class="audit" wx:if="{{audit}}">
+  <view class="audit-img">
+    <image src='../../../images/auditing.png'></image>
+  </view>
+  <view class="audit-s">
+    <text>提交成功，请等待管理员审核！</text>
+  </view>
+  <view class="audit-p">
+    <text>预计24小时审核完毕，审核结果会已短信 通知到您的手机上</text>
+  </view>
+</view>
+
+<!-- 商家认证成功 -->
+<block wx:if="{{success}}">
+  <view class="certification">
+    <view class="success">
+      <text class="text">恭喜您成为认证商家</text>
+    </view>
+    <view class="success-t">
+      <view class="success-l">
+        <view class="success-left">姓名</view>
+        <view class="success-right">{{authinfo.realName}}</view>
+      </view>
+      <view class="success-l">
+        <view class="success-left">手机号</view>
+        <view class="success-right">{{authinfo.moblie}}</view>
+      </view>
+      <view class="success-l">
+        <view class="success-left">商铺名称</view>
+        <view class="success-right">{{authinfo.shopName}}</view>
+      </view>
+      <view class="success-lr">
+        <view class="success-r">
+          <view class="success-left">类型</view>
+          <view class="success-right">{{authinfo.shopType}}</view>
+        </view>
+        <view class="success-img">
+          <image src="../../../images/right.png"></image>
+        </view>
+      </view>
+      <view class="success-lr">
+        <view class="success-r">
+          <view class="success-left">所在地区</view>
+          <view class="success-right">{{authinfo.addr}}</view>
+        </view>
+        <view class="success-img">
+          <image src="../../../images/right.png"></image>
+        </view>
+      </view>
+      <view class="success-a">
+        <view class="success-left">详细地址</view>
+        <view class="success-right">{{authinfo.addr}}</view>
+      </view>
+    </view>
+    <view class="image">
+      <view class='img'>
+        <image src='{{authinfo.photo}}'></image>
+      </view>
+      <text>仅限1张</text>
+    </view>
+    <view class="explain">
+      <view class="explain-img">
+        <image src='../../../images/explain.png'></image>
+      </view>
+      <view class='explain-text'>
+        <text>为了保证您的利益，请如实上传营业执照或店铺照片，我们将 在24小时内完成你的认证。</text>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- 商家认证失败 -->
+<block wx:if="{{fail}}">
+  <view class="certification">
+    <view class="fail">
+      <text class="text">认证失败,请重新提交认证</text>
+    </view>
+    <view class="success-t">
+      <view class="success-l">
+        <view class="success-left">姓名</view>
+        <view class="success-right">
+          <input class="input" bindinput="authinfoName" placeholder="请填写您的姓名" maxlength='8' value="{{authinfo.realName}}" auto-focus/>
+        </view>
+      </view>
+      <view class="success-l">
+        <view class="success-left">手机号</view>
+        <view class="success-right">
+          <input class="input" bindinput="authinfoMobile" value="{{authinfo.moblie}}" maxlength='11' placeholder="请填写您的手机号码" />
+        </view>
+      </view>
+      <view class="success-l">
+        <view class="success-r">
+          <view class="success-left">商铺名称</view>
+          <view class="success-right">
+            <input class="input" bindinput="authinfoShop" value="{{authinfo.shopName}}" maxlength='11' placeholder="请填写您的商铺名称" />
+          </view>
+        </view>
+      </view>
+      <view class="success-lr">
+        <view class="success-r">
+          <view class="success-left">类型</view>
+          <view class="success-right">
+            <input class="input" value="{{authinfo.shopType}}" disabled="true" bindtap="openType" placeholder="请选择您的商铺类型" />
+          </view>
+        </view>
+        <view class="success-img">
+          <image src="../../../images/right.png"></image>
+        </view>
+      </view>
+      <view class="success-lr">
+        <view class="success-r">
+          <view class="success-left">所在地区</view>
+          <view class="success-right">
+            <input class="input" value="{{authinfo.province +  authinfo.city + authinfo.area}}" disabled="true" bindtap="chooseRegion" placeholder="请选择您所在的省/市/区" />
+          </view>
+        </view>
+        <view class="success-img">
+          <image src="../../../images/right.png"></image>
+        </view>
+      </view>
+      <view class="success-a">
+        <view class="success-left">详细地址</view>
+        <view class="success-right"></view>
+        <textarea class="textarea" bindblur="bindTextAreaBlurauthinfo" placeholder="请填写您的详细地址" name="textarea" value="{{authinfo.addr}}" />
+      </view>
+    </view>
+    <view class="image">
+      <view class='img-hasPicture' wx:if="{{hasPicture == false}}">
+        <view class="img" bindtap="chooseImage">
+          <image src='{{authinfo.photo}}'></image>
+        </view>
+        <text>仅限1张</text>
+      </view>
+      <view class="weui-uploader__files" id="uploaderFiles" wx:else>
+        <block>
+          <view class="weui-uploader__file img" bindtap="chooseImage">
+            <image class="weui-uploader__img" src="{{picUrls}}" data-src='{{picUrls}}' mode="aspectFill" />
+          </view>
+          <text class="weui-one">仅限1张</text>
+        </block>
+      </view>
+    </view>
+    <view class="explain">
+      <view class="explain-img">
+        <image src='../../../images/explain.png'></image>
+      </view>
+      <view class='explain-text'>
+        <text>为了保证您的利益，请如实上传营业执照或店铺照片，我们将 在24小时内完成你的认证。</text>
+      </view>
+    </view>
+    <view class="btns">
+      <button class="save" bindtap="create">重新提交</button>
+    </view>
+  </view>
+</block>
+
+<view class="region-select" wx:if="{{openSelectRegion}}">
+  <view class="hd">
+    <view class="region-selected">
+      <view class="item {{item.id == 0 ? 'disabled' : ''}} {{(regionType -1) === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="id">{{item.name}}</view>
+    </view>
+    <view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
+  </view>
+  <view class="bd">
+    <scroll-view scroll-y class="region-list">
+      <view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="id">{{item.name}}</view>
+    </scroll-view>
+  </view>
+</view>
+<view class="bg-mask" bindtap="cancelSelectRegion" wx:if="{{openSelectRegion}}"></view>
+<view class="region-select" wx:if="{{opentype}}">
+  <view class="hdtype">
+    <view class="region-type">
+      <view class="item-ty">类型</view>
+    </view>
+    <view class="donetype" bindtap="openType">X</view>
+  </view>
+  <view class="bd">
+    <scroll-view scroll-y class="region-list">
+      <view class="item-type {{item.id == id ? 'type' : ''}}" bindtap="opentype" data-id="{{item.id}}" data-name="{{item.shopTypename}}" wx:for="{{Shopauth}}" wx:key="index">{{item.shopTypename}}</view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,756 @@
+<!--pages/release_edit/release_edit.wxml-->
+<view class="container">
+  <block wx:if="{{!release}}">
+    <view class="resume-header">
+      <view class="resume-user-real">
+        <view class="resume-user">
+          <view class="resume-user">{{user.real_name}}</view>
+          <view class="resume-state">{{user.work_status}}</view>
+          <view class="resume-edit-image" data-resume_id="{{resume.resume_id}}" bindtap="releasePersonal">
+            <image src="{{edit}}"></image>
+          </view>
+        </view>
+        <view class="resume-user">
+          <view class="resume-sex">{{user.sex == 1?'男':'女'}}</view>
+          <view class="resume-age">{{user.age?user.age + '岁':''}}</view>
+          <view class="resume-education">{{user.education}}</view>
+          <view class="resume-experience">{{user.experience}}</view>
+        </view>
+        <view class="resume-user">
+          <view class="resume-user-city">{{user.city}}</view>
+          <view class="resume-user-mobile">{{user.mobile}}</view>
+          <view class="resume-user-email">{{user.email}}</view>
+        </view>
+      </view>
+      <view class="resume-image">
+        <image src="{{user.avatar}}"></image>
+      </view>
+    </view>
+    <view class="releases">
+      <view class="resume-text" bindtap="releaseJob">
+        <text class="resume-left">求职期望</text>
+      </view>
+      <block wx:if="{{resume}}">
+        <view class="release-body" bindtap="editJob">
+          <view class="release-name">
+            <view class="release-s">{{resume.duty_name}}</view>
+            <view class="release-s">{{resume.city}}</view>
+            <view class="release-s">{{resume.min_salary?resume.min_salary + 'K' + '-':''}}{{resume.max_salary?resume.max_salary + 'K':''}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="releases">
+      <view class="release-header">教育经历</view>
+      <block wx:if="{{!expectation}}">
+        <view class="release-body" wx:for="{{education}}" wx:key="id" data-index="{{index}}" bindtap="editEducation">
+          <view class="release-name">
+            <view class="release-s">{{item.school_name}}</view>
+            <view class="release-s">{{item.diploma}}</view>
+            <view class="release-s">{{item.major}}</view>
+            <view class="release-s">{{item.start_time}}-{{item.end_time}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+      <view class="release-footer" bindtap="releaseExperience">
+        <text>添加教育经历</text>
+      </view>
+    </view>
+    <!-- 工作经历 -->
+    <view class="releases">
+      <view class="release-header">工作经历</view>
+      <block wx:if="{{!works}}">
+        <view class="release-body" wx:for="{{work}}" wx:key="id" data-index="{{index}}" bindtap="editWork">
+          <view class="release-name">
+            <view class="release-s">{{item.company_name}}</view>
+            <view class="release-s">{{item.start_time}}-{{item.end_time}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+      <view class="release-footer" bindtap="releaseWork">
+        <text>添加工作经历</text>
+      </view>
+    </view>
+    <!-- 项目经验 -->
+    <view class="releases">
+      <view class="release-header">项目经验</view>
+      <block wx:if="{{!projects}}">
+        <view class="release-body" wx:for="{{project}}" wx:key="id" data-index="{{index}}" bindtap="editProject">
+          <view class="release-name">
+            <view class="release-s">{{item.project_name}}</view>
+            <view class="release-s">{{item.start_time}}-{{item.end_time}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+      <view class="release-footer" bindtap="releaseProject">
+        <text>添加项目经验</text>
+      </view>
+    </view>
+    <view class="releases">
+      <view class="release-header">语言能力</view>
+      <block wx:if="{{!languages}}">
+        <view class="release-body" wx:for="{{language}}" wx:key="id" data-index="{{index}}" bindtap="editLanguage">
+          <view class="release-name">
+            <view class="release-s">{{item.language_name}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+      <view class="release-footer" bindtap="releaseLanguage">
+        <text>添加语言能力</text>
+      </view>
+    </view>
+    <view class="releases">
+      <view class="release-header">技能证书</view>
+      <block wx:if="{{!skilles}}">
+        <view class="release-body" wx:for="{{skill}}" wx:key="id" data-index="{{index}}" bindtap="editSkill">
+          <view class="release-name">
+            <view class="release-s">{{item.skill_name}}</view>
+          </view>
+          <view class="release-right">
+            <image class="right" src="{{right}}"></image>
+          </view>
+        </view>
+      </block>
+      <view class="release-footer" bindtap="releaseSkill">
+        <text>添加技能证书</text>
+      </view>
+    </view>
+    <view class="resume" bindtap="resumeDescription">
+      <text class="resume-left">自我介绍</text>
+      <view class="resume-right">
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="textarea">
+      <textarea bindblur="bindResumedDescriptionInput" value="{{resume_description}}" disabled="true" placeholder="请输入自我介绍" placeholder-class="placeholder-textarea" maxlength='140' />
+    </view>
+    <view class="bottom"></view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="submit" bindtap="formSubmit" data-resume_id="{{resume.resume_id}}">保存</button>
+    </view>
+  </block>
+  <!-- 求职期望页面开始 -->
+  <block wx:if="{{expectation}}">
+    <view class="resume" bindtap="IntentionalPosition">
+      <text class="resume-left">意向职位</text>
+      <view class="resume-right">
+        <text>{{duty_name}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="workCity">
+      <text class="resume-left">工作城市</text>
+      <view class="resume-right">
+        <text>{{province}}{{city}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="Salary">
+      <text class="resume-left">期望薪资</text>
+      <view class="resume-right">
+        <text>{{min_salary? min_salary + 'K-': ''}}{{max_salary? max_salary + 'K': ''}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button class="sure" bindtap="releaseJobSure">确定</button>
+    </view>
+  </block>
+  <!-- 意向职位 -->
+  <block wx:if="{{position}}">
+    <view class="input">
+      <input bindinput="bindPositionInput" value="{{duty_name}}" placeholder="请输入意向职位" placeholder-class="placeholder" maxlength='18' />
+    </view>
+    <view class="btn-area">
+      <button class="sure" bindtap="IntentionalPosition">确定</button>
+    </view>
+  </block>
+  <view class="mask-show {{ showWorkCity ? 'show' : '' }}">
+    <view class="mask" catchtap="workCity" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="workCity"></image>
+        <text>工作城市</text>
+        <image src="{{determine}}" bindtap="workCitySure"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{eduValue}}" bindchange="cityBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{provincedata}}" wx:key="{{index}}" data-idx='{{item}}'>{{item.name}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{citydata}}" wx:key="{{index}}" data-idx='{{item}}'>{{item.name}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{jobs}}">
+    <view class="job">
+      <view class="job-search">
+        <input bindinput="bindJobInput" value="{{emailInput}}" placeholder="输入职位名称关键词进行搜索" placeholder-class="placeholder" maxlength='10' />
+      </view>
+      <view class="job-list" wx:for="{{jobList}}" data-idx='{{index}}' bindtap="jobList">
+        <view class="job-name {{idx == index ? 'job-title' : ''}}">{{item}}</view>
+      </view>
+      <view class="btn-area">
+        <button class="btn" bindtap="releaseJob">完成</button>
+      </view>
+    </view>
+  </block>
+  <!-- 教育经历页面 -->
+  <block wx:if="{{eduExperience}}">
+    <view class="resume" bindtap="School">
+      <text class="resume-left">学校</text>
+      <view class="resume-right">
+        <text>{{school_name?school_name:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="diplomaEducation">
+      <text class="resume-left">学历</text>
+      <view class="resume-right">
+        <text>{{diploma?diploma:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="Major">
+      <text class="resume-left">专业</text>
+      <view class="resume-right">
+        <text>{{major?major:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="Enrolment">
+      <text class="resume-left">入学时间</text>
+      <view class="resume-right">
+        <text>{{start_time?start_time:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="End">
+      <text class="resume-left">毕业时间</text>
+      <view class="resume-right">
+        <text>{{end_time?end_time:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="Experience">
+      <text class="resume-left">在校经历</text>
+      <view class="resume-right">
+        <text>{{experience?experience:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="{{!eduindex?'releaseExperienceSure':'editreleaseExperience'}}">完成</button>
+    </view>
+  </block>
+  <!-- 学校 -->
+  <block wx:if="{{eduExperienceSchool}}">
+    <view class="input">
+      <input bindinput="bindSchoolInput" value="{{schoolInput}}" placeholder="请输入学校名称" placeholder-class="placeholder" maxlength='10' />
+    </view>
+    <view class="btn-area">
+      <button class="sure" bindtap="School">确定</button>
+    </view>
+  </block>
+  <!-- 专业 -->
+  <block wx:if="{{eduExperienceMajor}}">
+    <view class="input">
+      <input bindinput="bindMajorInput" value="{{major}}" placeholder="专业" placeholder-class="placeholder" maxlength='10' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="Major">确定</button>
+    </view>
+  </block>
+  <!-- 在校经历 -->
+  <block wx:if="{{Experiencetext}}">
+    <view class="textarea">
+      <textarea bindblur="bindexperienceInput" value="{{experience}}" placeholder="请填写在校经历" placeholder-class="placeholder-textarea" maxlength='140' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="Experience">确定</button>
+    </view>
+  </block>
+  <!-- 工作经历页面 -->
+  <block wx:if="{{works}}">
+    <view class="resume" bindtap="companyName">
+      <text class="resume-left">公司名称</text>
+      <view class="resume-right">
+        <text>{{company_name?company_name:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="Trade">
+      <text class="resume-left">所属行业</text>
+      <view class="resume-right">
+        <text>{{trade_name?trade_name:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="startTime">
+      <text class="resume-left">开始时间</text>
+      <view class="resume-right">
+        <text>{{start_times?start_times:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="EndTime">
+      <text class="resume-left">结束时间</text>
+      <view class="resume-right">
+        <text>{{end_times?end_times:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="workName">
+      <text class="resume-left">职位名称</text>
+      <view class="resume-right">
+        <text>{{work_name?work_name:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="workContent">
+      <text class="resume-left">工作内容</text>
+      <view class="resume-right">
+        <text>{{work_content?work_content:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="{{windex == 'index'?'releaseWorkContent':'editreleaseWorkContent'}}">完成</button>
+    </view>
+  </block>
+  <!-- 公司名称 -->
+  <block wx:if="{{companyname}}">
+    <view class="input">
+      <input bindinput="bindCompanyInput" value="{{company_name}}" placeholder="请输入公司名称" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="companyName">确定</button>
+    </view>
+  </block>
+  <!-- 所属行业 -->
+  <block wx:if="{{trades}}">
+    <view class="job">
+      <view class="job-search">
+        <input bindblur="bindJobInput" value="{{emailInput}}" placeholder="输入职位名称关键词进行搜索" placeholder-class="placeholder" maxlength='10' />
+      </view>
+      <view class="job-list" wx:for="{{trade}}" data-id='{{item.id}}' data-name='{{item.title}}' bindtap="tradeList" wx:key="id">
+        <view class="job-name {{trade_id == item.id ? 'job-title' : ''}}">{{item.title}}</view>
+      </view>
+      <view class="btn-area">
+        <button class="btn" bindtap="Trade">完成</button>
+      </view>
+    </view>
+  </block>
+  <!-- 工作经历入学时间 -->
+  <view class="mask-show {{ showStartTime ? 'show' : '' }}">
+    <view class="mask" catchtap="startTime" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="startTime"></image>
+        <text>入学时间</text>
+        <image src="{{determine}}" bindtap="startTime"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindStartTimeChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 工作经历结束时间 -->
+  <view class="mask-show {{ showEndTime ? 'show' : '' }}">
+    <view class="mask" catchtap="EndTime" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="EndTime"></image>
+        <text>结束时间</text>
+        <image src="{{determine}}" bindtap="EndTime"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindEndTimeChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 工作经历 -->
+  <block wx:if="{{WorkName}}">
+    <view class="input">
+      <input bindinput="bindWorNameInput" value="{{work_name}}" placeholder="请输入您职位名称" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="workName">确定</button>
+    </view>
+  </block>
+  <!-- 工作内容 -->
+  <block wx:if="{{WorkContent}}">
+    <view class="textarea">
+      <textarea bindblur="bindWorkContentInput" value="{{work_content}}" placeholder="请填写在校经历" placeholder-class="placeholder-textarea" maxlength='140' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="workContent">确定</button>
+    </view>
+  </block>
+  <!-- 项目经验页面开始 -->
+  <block wx:if="{{projectExperience}}">
+    <view class="resume" bindtap="projectName">
+      <text class="resume-left">项目名称</text>
+      <view class="resume-right">
+        <text>{{project_name?project_name:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="projectRole">
+      <text class="resume-left">担任角色</text>
+      <view class="resume-right">
+        <text>{{project_role?project_role:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="ProjectStartTime">
+      <text class="resume-left">开始时间</text>
+      <view class="resume-right">
+        <text>{{start_timesp?start_timesp:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="ProjectEndTime">
+      <text class="resume-left">结束时间</text>
+      <view class="resume-right">
+        <text>{{end_timesp?end_timesp:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="projectDescription">
+      <text class="resume-left">项目描述</text>
+      <view class="resume-right">
+        <text>{{project_description?project_description:'请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="{{rindex === 'rindex'?'releaseProjectContent':'editReleaseProjectContent'}}">完成</button>
+    </view>
+  </block>
+  <!-- 项目名称 -->
+  <block wx:if="{{ProjectName}}">
+    <view class="input">
+      <input bindinput="bindProjectNameInput" value="{{project_name}}" placeholder="请输入您的项目名称" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="projectName">确定</button>
+    </view>
+  </block>
+  <!-- 担任角色 -->
+  <block wx:if="{{ProjectRole}}">
+    <view class="input">
+      <input bindinput="bindProjectRoleInput" value="{{project_role}}" placeholder="请输入您的担任角色" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="projectRole">确定</button>
+    </view>
+  </block>
+  <!-- 项目经验入学时间 -->
+  <view class="mask-show {{ showStartProject ? 'show' : '' }}">
+    <view class="mask" catchtap="ProjectStartTime" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="ProjectStartTime"></image>
+        <text>入学时间</text>
+        <image src="{{determine}}" bindtap="ProjectStartTime"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindStartProjectChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 项目经验结束时间 -->
+  <view class="mask-show {{ showProjectEndTime ? 'show' : '' }}">
+    <view class="mask" catchtap="ProjectEndTime" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="ProjectEndTime"></image>
+        <text>结束时间</text>
+        <image src="{{determine}}" bindtap="ProjectEndTime"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindEndProjectChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 项目描述 -->
+  <block wx:if="{{ProjectDescription}}">
+    <view class="textarea">
+      <textarea bindblur="bindProjectDescriptionInput" value="{{project_description}}" placeholder="请输入项目介绍" placeholder-class="placeholder-textarea" maxlength='140' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="projectDescription">确定</button>
+    </view>
+  </block>
+  <!-- 项目经验页面结束 -->
+  <!-- 语言能力页面开始 -->
+  <block wx:if="{{Language}}">
+    <view class="input">
+      <input bindinput="bindLanguageInput" value="{{language_name}}" placeholder="请输入语言水平" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="{{lindex === 'lindex' ?'releaseLanguageSure':'editreleaseLanguageSure'}}">确定</button>
+    </view>
+  </block>
+  <!-- 技能证书页面开始 -->
+  <block wx:if="{{Skill}}">
+    <view class="input">
+      <input bindinput="bindSkillInput" value="{{skill_name}}" placeholder="请输入所获证书" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="releaseSkillSure">确定</button>
+    </view>
+  </block>
+  <!-- 自我介绍 -->
+  <block wx:if="{{ResumedDescription}}">
+    <view class="textarea">
+      <textarea bindblur="bindResumedDescriptionInput" value="{{resume_description}}" placeholder="请输入自我介绍" placeholder-class="placeholder-textarea" maxlength='140' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="resumeDescription">确定</button>
+    </view>
+  </block>
+
+
+  <!-- 邮箱 -->
+  <block wx:if="{{email}}">
+    <view class="input">
+      <input bindinput="bindEmailInput" value="{{emailInput}}" placeholder="请输入您的邮箱" placeholder-class="placeholder" maxlength='20' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="personalEmail">确定</button>
+    </view>
+  </block>
+  <!-- 手机号码 -->
+  <block wx:if="{{phone}}">
+    <view class="input">
+      <input bindinput="bindPhoneInput" value="{{PhoneInput}}" placeholder="请输入您的手机号码" placeholder-class="placeholder" maxlength='11' />
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="personalPhone">确定</button>
+    </view>
+  </block>
+  <view class="camera">
+    <view class="share-pop-box" hidden="{{!openCamera}}">
+      <view class="share-pop">
+        <view class='share-info'>
+          <view class="sharebtn" wx:if="{{!isGroupon}}" bindtap="camerachooseimage">
+            <image class='sharebtn_image' src='/images/camera.png' mode='widthFix'></image>
+            <view class='sharebtn_text'>打开相机</view>
+          </view>
+          <view class="savesharebtn" wx:if="{{!isGroupon}}" bindtap="albumchooseimage">
+            <image class='sharebtn_image' src='/images/gallery.png' mode='widthFix'></image>
+            <view class='sharebtn_text'>打开图库</view>
+          </view>
+          <view class="avatarbtn" wx:if="{{!isGroupon}}" bindtap="userInfochooseimage">
+            <image class='sharebtn_image' src='/images/defaultAvatar.png' mode='widthFix'></image>
+            <view class='sharebtn_text'>默认头像</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area-cancel">
+        <button class="cancel" bindtap="release">取消</button>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showDialog ? 'show' : '' }}">
+    <view class="mask" catchtap="toggleDialog" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleDialog"></image>
+        <text>出生年月</text>
+        <image src="{{determine}}" bindtap="toggleDialog"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showEducation ? 'show' : '' }}">
+    <view class="mask" catchtap="diploma" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="diploma"></image>
+        <text>选择学历</text>
+        <image src="{{determine}}" bindtap="diploma"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{eduValue}}" bindchange="eduBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{educationdata}}" wx:key="{{index}}" data-idx='{{item}}'>{{item.name}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showCity ? 'show' : '' }}">
+    <view class="mask" catchtap="toggleCity" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleCity"></image>
+        <text>所在城市</text>
+        <image src="{{determine}}" bindtap="toggleCity"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{eduValue}}" bindchange="eduBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{city}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{city}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showWorking ? 'show' : '' }}">
+    <view class="mask" catchtap="toggleWorking" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleWorking"></image>
+        <text>工作年限</text>
+        <image src="{{determine}}" bindtap="toggleWorking"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{workValue}}" bindchange="workBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{working}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showJob ? '' : '' }}">
+    <view class="mask" catchtap="toggleJob" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleJob"></image>
+        <text>求职状态</text>
+        <image src="{{determine}}" bindtap="toggleJob"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{jobValue}}" bindchange="workBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{job}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="mask-show {{ showSalary ? 'show' : '' }}">
+    <view class="mask" catchtap="Salary" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="Salary"></image>
+        <text>期望薪资</text>
+        <image src="{{determine}}" bindtap="SalarySure"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{salaryValue}}" bindchange="salaryBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{startSalary}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}K</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{endSalary}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}K</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 入学时间 -->
+  <view class="mask-show {{ showEnrolment ? 'show' : '' }}">
+    <view class="mask" catchtap="Enrolment" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="Enrolment"></image>
+        <text>入学时间</text>
+        <image src="{{determine}}" bindtap="Enrolment"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindEnrolmentChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <!-- 结束时间 -->
+  <view class="mask-show {{ showEnd ? 'show' : '' }}">
+    <view class="mask" catchtap="End" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="End"></image>
+        <text>结束时间</text>
+        <image src="{{determine}}" bindtap="End"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindEndChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+</view>

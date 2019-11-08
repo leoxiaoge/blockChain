@@ -1,0 +1,137 @@
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.no-collect {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.no-collect .c {
+  width: 100%;
+  height: auto;
+  margin-top: 200rpx;
+}
+
+.no-collect .c image {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 258rpx;
+  height: 258rpx;
+}
+
+.no-collect .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.collect-list {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding-left: 30rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 212rpx;
+  width: 720rpx;
+  background: #fff;
+  padding: 30rpx 30rpx 30rpx 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.item:last-child {
+  border-bottom: 1px solid #fff;
+}
+
+.item .img {
+  float: left;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.item .info {
+  float: right;
+  width: 540rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20rpx;
+  padding-right: 34rpx;
+}
+
+.item .info .name {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  align-content: center;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 40rpx;
+}
+
+.item .info .subtitle {
+  margin: 8rpx 0rpx 12rpx 0rpx;
+  font-size: 24rpx;
+  color: #888;
+  line-height: 40rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.item .info .price {
+  margin-top: 8rpx;
+  font-size: 38rpx;
+  color: #e83a3b;
+  line-height: 40rpx;
+}
+
+.item .info .pri {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #e83a3b;
+  line-height: 40rpx;
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.follow {
+  width: 120rpx;
+  height: 48rpx;
+  background: #eee;
+  text-align: center;
+  font-size: 22rpx;
+  color: #999;
+  border-radius: 500rpx;
+}

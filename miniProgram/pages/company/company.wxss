@@ -1,0 +1,91 @@
+/* pages/company/company.wxss */
+.line {
+  width: 2rpx;
+  height: 40rpx;
+  position: relative;
+  top: 28rpx;
+  right: 50%;
+  border-right: 2rpx solid #ccc;
+  z-index: 10;
+}
+
+.nav-warp .active text {
+  color: #2bbcd9;
+}
+
+.nav-warp {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow: hidden;
+}
+
+.nav-warp .tab {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-txt {
+  text-align: center;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  width: 50%;
+  float: left;
+  height: 90rpx;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+
+.tab {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.company{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.company-content{
+  font-size: 20rpx;
+}
+
+.company-image image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.company-introduce{
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+  padding: 40rpx 20rpx 40rpx 20rpx;
+}
+
+.company-address{
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+  background: #fff;
+}
+
+.company-information{
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+  background: #fff;
+}
+
+.company-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 100rpx;
+}

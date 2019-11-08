@@ -1,0 +1,96 @@
+/* pages/ucenter/recruit/recruit.wxss */
+.college{
+  border-bottom: 2rpx solid #ccc;
+}
+.college-body-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx;
+}
+
+.college-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.college-display .display {
+  background: #fff;
+  color: #2bbcd9;
+  font-size: 24rpx;
+  border: 2rpx solid #2bbcd9;
+  border-radius: 100rpx;
+  width: 120rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.delete-edit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.delete-edit .btn {
+  background: #fff;
+  color: #2bbcd9;
+  font-size: 24rpx;
+  border: 2rpx solid #2bbcd9;
+  border-radius: 100rpx;
+  width: 120rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.delete-edit .delete {
+  margin-right: 20rpx;
+}
+
+.college-hide {
+  background: #fff;
+  border-radius: 100rpx;
+}
+
+.college-hide .display {
+  width: 140rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #fff;
+  color: #2bbcd9;
+  font-size: 24rpx;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  border-top: 2rpx solid #2bbcd9;
+  border-left: 2rpx solid #2bbcd9;
+  border-right: 2rpx solid #2bbcd9;
+  padding-left:4px;
+  padding-right:4px;
+}
+
+.college-hide .partialHide {
+  width: 140rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #fff;
+  color: #2bbcd9;
+  font-size: 24rpx;
+  border-top: 2rpx solid #2bbcd9;
+  border-left: 2rpx solid #2bbcd9;
+  border-right: 2rpx solid #2bbcd9;
+  padding-left:4px;
+  padding-right:4px;
+}
+
+.college-hide .hide {
+  width: 140rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #fff;
+  color: #2bbcd9;
+  font-size: 24rpx;
+  border-radius: 0rpx 0rpx 20rpx 20rpx;
+  border: 2rpx solid #2bbcd9;
+  padding-left:4px;
+  padding-right:4px;
+}

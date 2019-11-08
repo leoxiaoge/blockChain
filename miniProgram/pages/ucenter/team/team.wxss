@@ -1,0 +1,70 @@
+/* pages/ucenter/team/team.wxss */
+.nav-warp .active text {
+  color: #2bbcd9;
+}
+
+.nav-warp {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow: hidden;
+}
+
+.nav-warp .tab {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  width: 2rpx;
+  height: 40rpx;
+  position: relative;
+  top: 28rpx;
+  right: 50%;
+  border-right: 2rpx solid #ccc;
+  z-index: 10;
+}
+
+.tab-txt {
+  text-align: center;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  width: 50%;
+  float: left;
+  height: 90rpx;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+
+.tab {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.team{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  padding: 28rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.team-img image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.team-content{
+  margin-left: 20rpx;
+}
+
+.team-time{
+  font-size: 20rpx;
+  color: #000000;
+}

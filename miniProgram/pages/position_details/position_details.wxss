@@ -1,0 +1,97 @@
+/* pages/position_details/position_details.wxss */
+@import '../position_content/position_content.wxss';
+
+page{
+  background: #fff;
+}
+
+.recommend{
+  background: #fff;
+}
+
+.recommend-name{
+  padding: 10rpx 20rpx;
+}
+
+.college-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.college-image {
+  margin-right: 18rpx;
+}
+
+.college-image image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.college-t {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.college-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #000;
+}
+
+.college-num {
+  font-size: 20rpx;
+  font-weight: 400;
+  line-height: 24rpx;
+}
+
+.college-end {
+  position: relative;
+  left: 300rpx;
+  top: 10rpx;
+  width: 120rpx;
+  height: 50rpx;
+  background: #808080;
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.college-end text {
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.college-right{
+  width: 80%;
+}
+
+.college-salary{
+  color: #2BBCD9;
+}
+
+.college-time {
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 20rpx;
+  color: #808080;
+}
+
+.college-sex{
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+
+.college-year{
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+
+.college-education{
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}

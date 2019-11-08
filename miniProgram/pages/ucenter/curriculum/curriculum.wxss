@@ -1,0 +1,94 @@
+/* pages/ucenter/curriculum/curriculum.wxss */
+.line {
+  width: 2rpx;
+  height: 40rpx;
+  position: relative;
+  top: 28rpx;
+  right: 50%;
+  border-right: 2rpx solid #ccc;
+  z-index: 10;
+}
+
+.nav-warp .active text {
+  color: #2bbcd9;
+}
+
+.nav-warp {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow: hidden;
+}
+
+.nav-warp .tab {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-txt {
+  text-align: center;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  width: 50%;
+  float: left;
+  height: 90rpx;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+
+.tab {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.curriculum{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.curriculum-header{
+  display: flex;
+}
+
+.curriculum-image{
+  display: flex;
+  align-items: center;
+}
+
+.curriculum-image image{
+  width: 180rpx;
+}
+
+.curriculum-boby{
+  margin: auto;
+  padding-left: 20rpx;
+}
+
+.curriculum-p{
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+curriculum-t{
+  font-size: 24rpx;
+}
+
+.btn{
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 24rpx;
+  color: #2BBCD9;
+  background: #fff;
+  border: 2rpx solid #2BBCD9;
+  border-radius: 60rpx;
+}
+

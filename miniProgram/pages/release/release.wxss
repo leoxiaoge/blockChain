@@ -1,0 +1,90 @@
+/* pages/release/release.wxss */
+page{
+  background: #fff;
+}
+
+.container{
+  background: #fff;
+}
+
+.release{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0rpx 20rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.release-left{
+  margin-right: 20rpx;
+  max-height: 300rpx;
+}
+
+.release-left image{
+  width: 160rpx;
+}
+
+.release-title{
+  font-size:28rpx;
+  font-weight:500;
+}
+
+.release-place{
+  font-size:20rpx;
+}
+
+.release-time{
+  font-size:20rpx;
+}
+
+.release-price{
+  font-size:20rpx;
+}
+
+.release-right{
+  width: 220rpx;
+  margin-left: 20rpx;
+}
+
+.release-delete{
+  float: right;
+  width:120rpx;
+  height:50rpx;
+  background: #808080;
+  text-align: center;
+  line-height: 50rpx;
+  font-size:24rpx;
+  color: #fff;
+}
+
+.release-num{
+  font-size: 20rpx;
+  margin-top: 50rpx;
+}
+
+.release-state{
+  font-size: 20rpx;
+  margin-top: 100rpx;
+  padding-right: 20rpx;
+}
+
+.release-community{
+  margin: auto;
+  width: 60%;
+  border: 2rpx solid #ccc;
+  background: #fff;
+  margin-top: 65rpx;
+  margin-bottom: 65rpx;
+  text-align: center;
+  padding: 40rpx;
+}
+
+.release-body{
+  max-width: 400rpx;
+}
+
+.release-plus image{
+  width: 30rpx;
+  margin-bottom: 24rpx;
+}

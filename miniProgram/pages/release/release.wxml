@@ -1,0 +1,52 @@
+<!--pages/release/release.wxml-->
+<view class="container">
+  <block wx:if="{{events.length > 0 ? true:false}}">
+    <view class="release" wx:for="{{events}}" wx:key="id">
+      <view class="release-left">
+        <image src="{{item.event_img}}" mode='widthFix'></image>
+      </view>
+      <view class="release-body" data-id="{{item.event_id}}" data-title="{{item.event_title}}" bindtap="communityDetails">
+        <view class="release-title">{{item.title}}</view>
+        <view class="release-price">费用：{{item.event_fee}}</view>
+        <view class="release-time">{{item.start_time}}开始</view>
+        <view class="release-place">活动地点：{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</view>
+      </view>
+      <view class="release-right">
+        <view class="release-delete" bindtap="eventsDelete" data-id='{{item.event_id}}'>删除</view>
+        <block wx:if="{{item.num && item.allnum}}">
+          <view class="release-num">报名人数：{{item.apply_num}}/{{item.join_num}}</view>
+        </block>
+        <block wx:if="{{item.end_time < newdata}}">
+          <view class="release-state">活动已结束</view>
+        </block>
+        <block wx:else>
+          <block wx:if="{{item.status == 0}}">
+            <view class="release-state">发布状态：待审核</view>
+          </block>
+          <block wx:if="{{item.status == 1}}">
+            <view class="release-state">发布状态：已通过</view>
+          </block>
+          <block wx:if="{{item.status == 2}}">
+            <view class="release-state">发布状态：未通过</view>
+          </block>
+        </block>
+      </view>
+    </view>
+    <view class="release-community">
+      <view class="release-plus" bindtap="release">
+        <image src="/images/plus.png " mode='widthFix'></image>
+        <view>发起新活动</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{none}}">
+      <view class="release-community">
+        <view class="release-plus" bindtap="release">
+          <image src="/images/plus.png " mode='widthFix'></image>
+          <view>你还没有活动发起，快去发起活动吧~</view>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

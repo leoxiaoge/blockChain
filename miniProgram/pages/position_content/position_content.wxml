@@ -1,0 +1,131 @@
+<!--pages/position_content/position_content.wxml-->
+<import src="/lib/wxParse/wxParse.wxml" />
+<view class="container">
+  <template name="position">
+    <view class="position-header">
+      <view class="position-salary">{{posts.min_salary?posts.min_salary + 'K-':''}}{{posts.max_salary?posts.max_salary + 'K':''}}</view>
+      <view class="position-name">{{posts.posts_name}}</view>
+      <view class="position-experiencen-education">
+        <view class="position-experience">{{posts.experience}}</view>
+        <view class="position-education">{{posts.education}}</view>
+      </view>
+      <view class="position-address">{{posts.province}}{{posts.city}}{{posts.zone}}{{posts.address}}</view>
+    </view>
+    <view class="position-footer" bindtap="company" data-title="{{posts.company.company_name}}" data-company_id="{{posts.company_id}}">
+      <view class="position-left">
+        <view class="position-avatar">
+          <image src="{{posts.company.company_logo}}"></image>
+        </view>
+        <view class="position-company">
+          <view class="position-company-name">{{posts.company.company_name}}</view>
+          <view class="position-financing">{{posts.company.financing}}·{{posts.company.staff_size}}·{{posts.duty.title}}</view>
+        </view>
+      </view>
+      <view class="position-right">
+        <image src="/images/right.png"></image>
+      </view>
+    </view>
+    <view class="position-content">
+      <view class="position-team-name">职位详情</view>
+      <import src="/lib/wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:postsDetail.nodes}}" />
+    </view>
+    <view class="position-team">
+      <view class="position-team-name">团队介绍</view>
+      <view class="position-team-content">
+        <import src="/lib/wxParse/wxParse.wxml" />
+        <template is="wxParse" data="{{wxParseData:postsTeamDetail.nodes}}" />
+      </view>
+    </view>
+  </template>
+  <template name="resume">
+    <view class="resume-header">
+      <view class="resume-user-real">
+        <view class="resume-user">
+          <view class="resume-user">{{resume.user.real_name}}</view>
+          <view class="resume-state">{{resume.user.work_status}}</view>
+        </view>
+        <view class="resume-user">
+          <view class="resume-sex">{{resume.user.sex == 1?'男':'女'}}</view>
+          <view class="resume-age">{{resume.user.age}}</view>
+          <view class="resume-education">{{resume.user.education}}</view>
+          <view class="resume-experience">{{resume.user.experience}}</view>
+        </view>
+        <view class="resume-user">
+          <view class="resume-user-city">{{resume.user.city}}</view>
+          <view class="resume-user-mobile">{{resume.user.mobile}}</view>
+          <view class="resume-user-email">{{resume.user.email}}</view>
+        </view>
+      </view>
+      <view class="resume-image" bindtap="previewImage" data-src="{{resume.user.avatar}}">
+        <image src="{{resume.user.avatar}}"></image>
+      </view>
+    </view>
+    <view class="resume-duty">
+      <view class="resume-duty-header">求职期望</view>
+      <view class="resume-duty-content">
+        <view class="resume-duty_name">{{resume.duty_name}}</view>
+        <view class="resume-city">{{resume.city}}</view>
+        <view class="resume-min_salary-max_salary">{{resume.min_salary?resume.min_salary + 'K-':''}}{{resume.max_salary?resume.max_salary + 'K':''}}</view>
+      </view>
+    </view>
+    <view class="resume-educations">
+      <view class="resume-educations-header">教育经历</view>
+      <view wx:for="{{resume.educations}}" wx:key="id">
+        <view class="resume-education-content">
+          <view class="resume-school_name">{{item.school_name}}</view>
+          <view class="resume-major">{{item.major}}</view>
+          <view class="resume-diploma">{{item.diploma}}</view>
+          <view class="resume-start_time">{{item.start_time}}-{{item.end_time}}</view>
+        </view>
+        <view class="resume-experience-text">
+          <textarea value="{{item.experience}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view class="resume-works">
+      <view class="resume-works-header">工作经历</view>
+      <view wx:for="{{resume.works}}" wx:key="id">
+        <view class="resume-work">
+          <view class="resume-company_name">{{item.company_name}}</view>
+          <view class="resume-start_time">{{item.start_time}}-{{item.end_time}}</view>
+        </view>
+        <view class="resume-work_name">{{item.work_name}}</view>
+        <view class="resume-work_content">
+          <textarea value="{{item.work_content}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view class="resume-project">
+      <view class="resume-project-header">项目经验</view>
+      <view wx:for="{{resume.projects}}" wx:key="id">
+        <view class="resume-project-name">
+          <view class="resume-project_name">{{item.project_name}}</view>
+          <view class="resume-start_time">{{item.start_time}}-{{item.end_time}}</view>
+        </view>
+        <view class="resume-project_role">{{item.project_role}}</view>
+        <view class="resume-project_description">
+          <textarea value="{{item.project_description}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view class="resume-languages">
+      <view class="resume-language-header">语言能力</view>
+      <view class="resume-language" wx:for="{{resume.language}}" wx:key="id">
+        <view class="resume-language_name">{{item.language_name}}</view>
+      </view>
+    </view>
+    <view class="resume-skills">
+      <view class="resume-skill-header">技能证书</view>
+      <view class="resume-skill" wx:for="{{resume.skill}}" wx:key="id">
+        <view class="resume-skill_name">{{item.skill_name}}</view>
+      </view>
+    </view>
+    <view class="resume-introduce">
+      <view class="resume-resume">自我介绍</view>
+      <view class="resume-resume_description">
+        <textarea value="{{resume.resume_description}}" disabled="true" />
+      </view>
+    </view>
+  </template>
+</view>

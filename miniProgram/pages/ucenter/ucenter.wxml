@@ -1,0 +1,22 @@
+<!--pages/ucenter/ucenter.wxml-->
+<view class="container">
+  <block wx:if="{{!userinfo}}">
+    <view class="userinfo">
+      <view class="userinfo-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="userinfo-name">
+        <open-data type="userNickName"></open-data>
+        <view class="userinfoName">{{mobile?mobile:''}}</view>
+      </view>
+    </view>
+  </block>
+  <view class="ucenter" wx:for="{{ucenter}}" wx:key="id" data-url="{{item.url}}" bindtap="ucenter">
+    <view class="ucenter-left">
+      <text>{{item.name}}</text>
+    </view>
+    <view class="ucenter-right">
+      <image src="/images/right.png"></image>
+    </view>
+  </view>
+</view>

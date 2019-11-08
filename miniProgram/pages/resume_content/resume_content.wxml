@@ -1,0 +1,14 @@
+<!--pages/resume_content/resume_content.wxml-->
+<view class="container">
+  <view class="resume">
+    <view class="resume-content">
+      <view class="resume-header">
+        <view class="resume-name">王小二</view>
+        <view class="">离职-随时到岗</view>
+      </view>
+      <view class="">
+        <image src=''></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,147 @@
+<!--pages/college/college.wxml-->
+<view class="nav-warp">
+  <view class="tab">
+    <block wx:for="{{navItem}}" wx:key="id">
+      <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+        <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+      </view>
+    </block>
+    <view class="line"></view>
+  </view>
+</view>
+<view class="search">
+  <block wx:if="{{city}}">
+    <view class="city" bindtap="workCity">{{city?city:'城市'}}</view>
+  </block>
+  <block wx:else>
+    <view class="city" bindtap="openSetting">{{city?city:'城市'}}</view>
+  </block>
+  <view class="input" bindtap='search' data-id="{{showItem}}">
+    <input placeholder="输入职位名称关键字进行搜索" placeholder-class="placeholder" disabled="true" maxlength='10' />
+  </view>
+  <view class="screen" bindtap="screen">筛选</view>
+</view>
+<view class="hidden" hidden="{{!hidden}}">
+  <view class="hidden-drop">
+    <view class="hidden-education">
+      <view class="hidden-header">学历</view>
+      <view class="hidden-condition">
+        <view class="education {{eduid == index? 'bg':''}}" data-idx="{{index}}" wx:for="{{educations}}" wx:key="id" bindtap="education">{{item}}</view>
+      </view>
+    </view>
+    <view class="hidden-experience">
+      <view class="hidden-header">经验</view>
+      <view class="hidden-condition">
+        <view class="experienc {{expid == index? 'bg':''}}" data-idx="{{index}}" wx:for="{{experiences}}" wx:key="id" bindtap="experienc">{{item}}</view>
+      </view>
+    </view>
+    <view class="hidden-salary">
+      <view class="hidden-header">薪资</view>
+      <view class="hidden-condition">
+        <view class="salary {{salid == item.id? 'bg':''}}" data-idx="{{item.id}}" data-min="{{item.min_salary}}" data-max="{{item.max_salary}}" wx:for="{{salary}}" wx:key="id" bindtap="salary">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="hidden-footer">
+    <view class="reset" bindtap="postsReset">重置</view>
+    <view class="submit" bindtap="postsSubmit">确定</view>
+  </view>
+</view>
+<view hidden="{{!hidden}}">
+  <view class="hidden-box" bindtouchstart='screen'></view>
+</view>
+<block wx:if="{{showItem == 1}}">
+  <view class="college" wx:for="{{posts}}" wx:key="id">
+    <view class="college-body" bindtap="collegeDetails" data-id="{{showItem}}" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">
+      <view class="college-image">
+        <image src="{{item.company.company_logo}}"></image>
+      </view>
+      <view class="college-right">
+        <view class="college-t">
+          <text class="college-title">{{item.posts_name}}</text>
+          <text class="college-salary">{{item.min_salary}}K-{{item.max_salary}}K</text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">{{item.company.company_name}}</text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">{{item.experience}}</text>
+          <text class="college-title">{{item.education}}</text>
+          <text class="college-time">{{item.add_time}}</text>
+        </view>
+        <view class="college-t">
+          <text class="college-address">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="college" wx:for="{{lists}}" wx:key="id">
+    <view class="college-body" bindtap="collegeDetails" data-id="{{showItem}}" data-resume_id="{{item.resume_id}}" data-title="{{item.user.real_name}}">
+      <view class="college-image">
+        <image src="{{item.user.avatar}}"></image>
+      </view>
+      <view class="college-right">
+        <view class="college-s">
+          <text class="college-title">{{item.user.real_name}}</text>
+          <text class="college-sex">{{item.user.sex == 1?'男':'女'}}</text>
+          <text class="college-year">{{item.user.age}}岁</text>
+          <text class="college-education">{{item.user.education}}</text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">意向职位<text>{{item.duty_name}}</text></text>
+        </view>
+        <view class="college-t">
+          <text class="college-title">工作年限</text>
+          <text class="college-title">{{item.user.experience}}</text>
+          <text class="college-time">{{item.add_time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:if="{{showItem == 1}}">
+  <view class="release" bindtap="release">
+    <view class="release-text">发布职位</view>
+  </view>
+</block>
+<block wx:else>
+  <view class="release" bindtap="release">
+    <view class="release-text">发布简历</view>
+  </view>
+</block>
+<view class="mask-show {{ showWorkCity ? 'show' : '' }}">
+  <view class="mask" catchtap="workCity" catchtouchmove="preventTouchMove" />
+  <view class="mask-content">
+    <view class="mask-header">
+      <image src="{{cancel}}" bindtap="workCity"></image>
+      <text>工作城市</text>
+      <image src="{{determine}}" bindtap="workCitySure"></image>
+    </view>
+    <view class="birthBox">
+      <picker-view style="width: 100%; height: 400rpx;" value="{{eduValue}}" bindchange="cityBindChange">
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{provincedata}}" wx:key="{{index}}" data-idx='{{item}}'>{{item.name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{citydata}}" wx:key="{{index}}" data-idx='{{item}}'>{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{none}}">
+  <block wx:if="{{posts.length <= 0 && lists.length <= 0  ? true:false}}">
+    <view class="order_none">
+      <image src="/images/college.png" class="order_none_img" mode='widthFix'></image>
+      <block wx:if="{{city}}">
+        <text class="order_none_tex">哎呀,您还没有{{navItem[showItem-1]}}呢</text>
+      </block>
+      <block wx:else>
+        <text class="order_none_tex">哎呀,您还没有允许“使用我的位置”呢</text>
+        <button class="btn setting" type="primary" bindtap="openSetting">去设置</button>
+      </block>
+    </view>
+  </block>
+</block>

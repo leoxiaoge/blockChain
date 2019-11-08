@@ -1,0 +1,15 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="content">
+    <view class="hd" style="transform:rotateZ({{angle}}deg);">
+      <image class="logo" src="{{userInfo.avatarUrl}}"></image>
+      <image class="wave" src="/images/wave.png" mode="aspectFill"></image>
+      <image class="wave wave-bg" src="/images/wave.png" mode="aspectFill"></image>
+    </view>
+    <view class="bd">
+      <image class="smalltitle" src="https://admin.lyzxy.com.cn/images/logo.png"></image>
+      <button open-type="getUserInfo" class="confirm-btn" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权进入学院</button>
+      <text class="copyright">欢迎体验链宇宙学院</text>
+    </view>
+  </view>
+</view>

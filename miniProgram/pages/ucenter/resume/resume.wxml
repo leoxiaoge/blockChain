@@ -1,0 +1,61 @@
+<!--pages/ucenter/resume/resume.wxml-->
+<view class="container">
+  <block wx:if="{{resume.user.real_name}}">
+    <view class="college">
+      <view class="college-body-new" bindtap="collegeDetails" data-resume_id="{{resume.resume_id}}" data-title="{{resume.user.real_name}}">
+        <view class="college-image">
+          <image src="{{resume.user.avatar}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-s">
+            <text class="college-title">{{resume.user.real_name}}</text>
+            <text class="college-sex">{{resume.user.sex == 1?'男':'女'}}</text>
+            <text class="college-year">{{resume.user.age}}岁</text>
+            <text class="college-education">{{resume.user.education}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">意向职位<text>{{resume.duty_name}}</text></text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">工作年限</text>
+            <text class="college-title">{{resume.user.experience}}</text>
+            <text class="college-time">{{resume.add_time}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="college-footer">
+        <block wx:if="{{!show}}">
+          <view class="college-display" bindtap="bindShow">
+            <block wx:if="{{resume.status == 0}}">
+              <button class="btn display">隐藏</button>
+            </block>
+            <block wx:elif="{{resume.status == 1}}">
+              <button class="btn display">部分隐藏</button>
+            </block>
+            <block wx:else>
+              <button class="btn display">显示</button>
+            </block>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="college-hide">
+            <button class="btn display" data-status='2' data-resume_id='{{resume.resume_id}}' bindtap="isShow">显示</button>
+            <button class="btn partialHide" data-status='1' data-resume_id='{{resume.resume_id}}' bindtap="isShow">部分隐藏</button>
+            <button class="btn hide" data-status='0' data-resume_id='{{resume.resume_id}}' bindtap="isShow">隐藏</button>
+          </view>
+        </block>
+        <view class="delete-edit">
+          <button class="btn delete" bindtap="resumeDelete" data-resume_id="{{resume.resume_id}}">删除</button>
+          <button class="btn edit" bindtap="releaseEdit" data-resume_id="{{resume.resume_id}}" data-title="{{resume.user.real_name}}">编辑</button>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="order_none">
+      <image src="/images/release.png" class="order_none_img" mode='widthFix'></image>
+      <text class="order_none_tex">哎呀,暂时还没有简历呢</text>
+      <button class="btn setting" type="primary" bindtap="release">去发布简历</button>
+    </view>
+  </block>
+</view>

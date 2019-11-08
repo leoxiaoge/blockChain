@@ -1,0 +1,77 @@
+/* pages/ucenter/distribution_data/distribution_data.wxss */
+
+.nav-warp .active text {
+  color: #2bbcd9;
+}
+
+.nav-warp {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow: hidden;
+}
+
+.nav-warp .tab {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  width: 2rpx;
+  height: 40rpx;
+  position: relative;
+  top: 28rpx;
+  right: 50%;
+  border-right: 2rpx solid #ccc;
+  z-index: 10;
+}
+
+.tab-txt {
+  text-align: center;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  width: 50%;
+  float: left;
+  height: 90rpx;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+
+.tab {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.data {
+  padding: 40rpx 20rpx 40rpx 20rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.data-image {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.data-image image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.data-name{
+  margin-left: 20rpx;
+}
+
+.data-header{
+  padding: 20rpx 10rpx;
+}
+
+.data-title{
+  padding: 10rpx 10rpx;
+}

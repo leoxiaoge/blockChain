@@ -1,0 +1,30 @@
+/* pages/ucenter/card/card.wxss */
+
+.userinfo {
+  position: absolute;
+  top: 10rpx;
+  color: #000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.userinfoName {
+  margin-top: 10rpx;
+  color: #808080;
+}
+
+.card image {
+  width: 100%;
+}

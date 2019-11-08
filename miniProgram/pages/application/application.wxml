@@ -1,0 +1,150 @@
+<!--pages/application/application.wxml-->
+<block wx:if="{{!fail}}">
+  <view class="container container-fill">
+    <!-- <view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
+      <view class="section section01 {{scrollindex==0?'active':''}}">
+        <view class="section-subtitle">
+          <image src='https://admin.lyzxy.com.cn/images/icon1.png' mode='widthFix'></image>
+        </view>
+        <view class="slide" animation="{{animationData}}">
+          <image src='/images/slide.png' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class="section section02 {{scrollindex==1?'active':''}}">
+        <view class="section-subtitle">
+          <image src='https://admin.lyzxy.com.cn/images/icon2.png' mode='widthFix'></image>
+        </view>
+        <view class="slide" animation="{{animationData}}">
+          <image src='/images/slide.png' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class="section section03 {{scrollindex==2?'active':''}}">
+        <view class="section-subtitle">
+          <image src='https://admin.lyzxy.com.cn/images/icon3.png' mode='widthFix'></image>
+        </view>
+        <view class="slide" animation="{{animationData}}">
+          <image src='/images/slide.png' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class="section section04 {{scrollindex==3?'active':''}}">
+        <view class="section-subtitle">
+          <image src='https://admin.lyzxy.com.cn/images/icon4.png' mode='widthFix'></image>
+        </view>
+        <scroll-view scroll-y class="section-content">
+          <view class="section-frame section-subtitle" wx:for="{{teacher}}" wx:key="*this">
+            <view class="section-left">
+              <view class="section-left-image">
+                <image src='{{item.avatar}}' mode='scaleToFill'></image>
+              </view>
+              <view class="section-left-text">
+                <text>{{item.name}}</text>
+              </view>
+            </view>
+            <view class="section-right">
+              <text>{{item.description}}</text>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="slide" animation="{{animationData}}">
+          <image src='/images/slide.png' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class="section section05 {{scrollindex==4?'active':''}}">
+        <text class="section-maintitle">个人信息填写</text>
+        <block wx:if="{{scrollindex == 4}}">
+          <view class="section-input section-subtitle">
+            <input placeholder="姓名" placeholder-class="placeholder section-subtitle" bindblur="inputName" maxlength='6' />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="出生日期（{{birthday}}）" placeholder-class="placeholder section-subtitle" disabled="true" type="digit" maxlength='8' bindtap="Birthday" />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="{{city?city : '所在城市'}}" placeholder-class="placeholder section-subtitle" disabled="true" maxlength='6' bindtap="provinceCity" />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="电话号码" value="{{mobile}}" placeholder-class="placeholder section-subtitle" type="number" bindblur="inputMobile" maxlength='11' />
+          </view>
+          <button class="section-btn" bindtap="obtain">
+            <text>获取学籍卡</text>
+          </button>
+        </block>
+      </view>
+    </view> -->
+    <view class="section">
+        <text class="section-maintitle">个人信息填写</text>
+        <block>
+          <view class="section-input section-subtitle">
+            <input placeholder="姓名" placeholder-class="placeholder section-subtitle" bindblur="inputName" maxlength='6' />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="出生日期（{{birthday}}）" placeholder-class="placeholder section-subtitle" disabled="true" type="digit" maxlength='8' bindtap="Birthday" />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="{{city?city : '所在城市'}}" placeholder-class="placeholder section-subtitle" disabled="true" maxlength='6' bindtap="provinceCity" />
+          </view>
+          <view class="section-input section-subtitle">
+            <input placeholder="电话号码" value="{{mobile}}" placeholder-class="placeholder section-subtitle" type="number" bindblur="inputMobile" maxlength='11' />
+          </view>
+          <button class="section-btn" bindtap="obtain">
+            <text>获取学籍卡</text>
+          </button>
+        </block>
+      </view>
+  </view>
+</block>
+<block wx:if="{{fail}}">
+  <view class="section-fail">
+    <view class="section-fail-image">
+      <image src="/images/005.png" mode='widthFix'></image>
+    </view>
+    <view class="msg">
+      <view class="text">{{msg}},以便获取学籍卡</view>
+    </view>
+    <button class="fail-btn" bindtap="obtainFail">
+      <text>返回</text>
+    </button>
+  </view>
+</block>
+<view class="mask-show {{ showDate ? 'show' : '' }}">
+  <view class="mask" />
+  <view class="mask-content">
+    <view class="mask-header">
+      <image src="{{cancel}}" bindtap="Birthday"></image>
+      <text>出生日期</text>
+      <image src="{{determine}}" bindtap="Birthday"></image>
+    </view>
+    <view class="birthBox">
+      <picker-view wx:if="{{years.length>0 && months.length>0}}" style="width: 100%; height: 400rpx;" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{years}}" wx:key="{{index}}">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{months}}" wx:key="{{index}}">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{days}}" wx:key="{{index}}">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>
+<view class="mask-show {{ showCity ? 'show' : '' }}">
+  <view class="mask" />
+  <view class="mask-content">
+    <view class="mask-header">
+      <image src="{{cancel}}" bindtap="provinceCity"></image>
+      <text>所在城市</text>
+      <image src="{{determine}}" bindtap="provinceCity"></image>
+    </view>
+    <view class="birthBox">
+      <picker-view style="width: 100%; height: 400rpx;" value="{{eduValue}}" bindchange="cityBindChange">
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{provinces}}" wx:key="id" data-id='{{item.id}}'>{{item.name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class='picker-view-column' wx:for="{{citys}}" wx:key="id" data-id='{{item.id}}'>{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,198 @@
+<!--pages/resume_newdetails/resume_newdetails.wxml-->
+<view class="container">
+  <block wx:if="{{release}}">
+    <view class="release" bindtap="releasePersonal">
+      <view class="avatar">
+        <image src="{{tempFilePaths}}"></image>
+        <text>编辑个人信息</text>
+      </view>
+      <image class="right" src="{{right}}"></image>
+    </view>
+    <view class="resume-t" bindtap="toggleSalary">
+      <view class="resume-title">求职期望</view>
+      <view class="resume-name">
+        <view class="resume-left">
+          <view class="resume-"></view>
+          <view class="resume"></view>
+          <view class="resume"></view>
+        </view>
+        <view class="resume-right">
+          <image class="right" src="{{right}}"></image>
+        </view>
+      </view>
+      <view class="addJob">
+        <text>添加求职期望</text>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="reset" bindtap="formReset">{{reset}}预览</button>
+      <button class="submit" bindtap="formSubmit">发布</button>
+    </view>
+  </block>
+  <block wx:if="{{jobs}}">
+    <view class="job">
+      <view class="job-search">
+        <input bindinput="bindJobInput" value="{{emailInput}}" placeholder="输入职位名称关键词进行搜索" placeholder-class="placeholder" maxlength='10' />
+      </view>
+      <view class="job-list" wx:for="{{jobList}}" data-idx='{{index}}' bindtap="jobList">
+        <view class="job-name {{idx == index ? 'job-title' : ''}}">{{item}}</view>
+      </view>
+      <view class="btn-area">
+        <button class="btn" bindtap="releaseJob">完成</button>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{!personal}}">
+    <view class="personal">
+      <view class="personal-text">
+        <text>选择头像</text>
+      </view>
+      <view class="personal-right" bindtap="release">
+        <image class="personal-avatar" src="{{avatar_logo}}"></image>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="personalName">
+      <text class="resume-left">姓名</text>
+      <view class="resume-right">
+        <text>{{real_name?real_name: '请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume">
+      <text class="resume-left">性别</text>
+      <view class="resume-right-sex">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio">
+            <radio value="0" checked="true" color="#2BBCD9" />
+            <text class="radio-text">男</text> </label>
+          <label class="radio">
+            <radio value="1" checked="" color="#2BBCD9" />
+            <text class="radio-text">女</text>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleDialog">
+      <text class="resume-left">年龄</text>
+      <view class="resume-right">
+        <text>{{age?age:'请选择'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleEducation">
+      <text class="resume-left">学历</text>
+      <view class="resume-right">
+        <text>{{educationName?educationName: '请填写'}}</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="personalEmail">
+      <text class="resume-left">邮箱</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="personalPhone">
+      <text class="resume-left">手机号码</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleCity">
+      <text class="resume-left">所在城市</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleWorking">
+      <text class="resume-left">工作年限</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleJob">
+      <text class="resume-left">求职状态</text>
+      <view class="resume-right">
+        <text>请选择</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="resumeUserInfo">确定</button>
+    </view>
+  </block>
+  <!-- 教育经历 -->
+  <block wx:if="{{eduExperience}}">
+    <view class="resume" bindtap="toggleSchool">
+      <text class="resume-left">学校</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume" bindtap="toggleEducation">
+      <text class="resume-left">学历</text>
+      <view class="resume-right">
+        <text>请选择</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume">
+      <text class="resume-left">专业</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume">
+      <text class="resume-left">入学时间</text>
+      <view class="resume-right">
+        <text>请选择</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume">
+      <text class="resume-left">毕业时间</text>
+      <view class="resume-right">
+        <text>请选择</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="resume">
+      <text class="resume-left">在校经历</text>
+      <view class="resume-right">
+        <text>请填写</text>
+        <image class="right" src="{{right}}"></image>
+      </view>
+    </view>
+    <view class="btn-area" hidden="{{openCamera}}">
+      <button class="sure" bindtap="personalSchool">完成</button>
+    </view>
+  </block>
+  
+  <view class="mask-show {{ showSalary ? 'show' : '' }}">
+    <view class="mask" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleSalary"></image>
+        <text>期望薪资</text>
+        <image src="{{determine}}" bindtap="toggleSalary"></image>
+      </view>
+      <view class="birthBox">
+        <picker-view style="width: 100%; height: 400rpx;" value="{{salaryValue}}" bindchange="salaryBindChange">
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{startSalary}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}K</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view class='picker-view-column' wx:for="{{endSalary}}" wx:key="{{index}}" data-idx='{{item}}'>{{item}}K</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+</view>

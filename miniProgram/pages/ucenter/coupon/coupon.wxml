@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="orders-switch">
+    <view class="items {{ status == 0 ? 'active' : ''}}" bindtap="switchTab" data-index='0'>
+      <view class="txt">未使用</view>
+    </view>
+    <view class="items {{ status == 1 ? 'active' : ''}}" bindtap="switchTab" data-index='1'>
+      <view class="txt">已使用</view>
+    </view>
+    <view class="items {{ status == 2 ? 'active' : ''}}" bindtap="switchTab" data-index='2'>
+      <view class="txt">已失效</view>
+    </view>
+  </view>
+  <view class="no-order" wx:if="{{orderList.length <= 0}}">
+    <view class="c">
+      <image src="https://javaapi.lanwang168.com/wx/storage/fetch/mnbhsz54tcf6pv567pgn.png" />
+      <text>还没有任何订单呢</text>
+    </view>
+  </view>
+
+<block wx:if="{{status == 0}}">
+  <view class="orders" wx:for="{{conpon}}">
+    <view class="coupon-list">
+      <view class="item">
+        <view class="content">
+          <view class='amount-price'>
+            <view class='amount'>{{item.couponAmount}}</view>
+            <view class='price'>元</view>
+          </view>
+          <view class="left">
+            <view class="name">{{item.couponName}}</view>
+            <view class="time">{{item.startDate}}-{{item.endDate}}</view>
+          </view>
+          
+            <view class="right">
+              <button class="go" bindtap='go' data-id="{{item.useCatId}}">去使用</button>
+            </view>
+
+        </view>
+        <view class="condition">
+          <text class="txt">{{item.couponDesc}}</text>
+          <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</block>
+<block wx:if="{{status == 1}}">
+  <view class="orders" wx:for="{{conpon}}">
+    <view class="coupon-list">
+      <view class="item">
+        <view class="content">
+        <view class='amount-price'>
+            <view class='amount'>{{item.couponAmount}}</view>
+            <view class='price'>元</view>
+          </view>
+          <view class="left">
+            <view class="name">{{item.couponName}}</view>
+            <view class="time">{{item.startDate}}-{{item.endDate}}</view>
+          </view>
+        </view>
+        <view class="condition">
+          <text class="txt">{{item.couponDesc}}</text>
+          <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</block>
+<block wx:if="{{status == 2}}">
+  <view class="orders" wx:for="{{conpon}}">
+    <view class="coupon-list">
+      <view class="item failed">
+        <view class="content">
+        <view class='amount-price'>
+            <view class='amount'>{{item.couponAmount}}</view>
+            <view class='price'>元</view>
+          </view>
+          <view class="left">
+            <view class="name">{{item.couponName}}</view>
+            <view class="time">{{item.startDate}}-{{item.endDate}}</view>
+          </view>
+        </view>
+        <view class="condition faileds">
+          <text class="txt">{{item.couponDesc}}</text>
+          <image src="https://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/couponArrow-71315b4145.png" class="icon"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+</view>

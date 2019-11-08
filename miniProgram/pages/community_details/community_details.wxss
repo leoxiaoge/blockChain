@@ -1,0 +1,420 @@
+/* pages/community_details/community_details.wxss */
+@import "../../lib/wxParse/wxParse.wxss";
+.swiper-container {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-container .swiper {
+  height: 500rpx;
+}
+
+.swiper-container .swiper .img {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-container .dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-container .dots .dot {
+  margin: 0 10rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border: 2rpx solid #FFFFFF;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.dots .dot.active {
+  width: 10rpx;
+  height: 10rpx;
+  orphans: 0;
+  background: #fff;
+}
+
+.details-header image {
+  width: 100%;
+}
+
+.comments {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.comments .comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18rpx 30rpx;
+}
+
+.comments .h {
+  height: 102.5rpx;
+  line-height: 100.5rpx;
+  padding-right: 30rpx;
+  border-bottom: 1px solid #f4f4f4;
+  padding-left: 30rpx;
+}
+
+.comments .h .t {
+  display: block;
+  float: left;
+  width: 50%;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.comments .h .i {
+  display: block;
+  float: right;
+  height: 100.5rpx;
+  line-height: 100.5rpx;
+  background-size: 52rpx;
+  color: rgb(153, 153, 153);
+}
+
+.comments .item {
+  display: flex;
+  height: auto;
+  overflow: hidden;
+}
+
+.comments .info {
+  width: 100%;
+  padding: 33rpx 0 0 0;
+  border-top: 2rpx solid #ccc;
+}
+
+.comments .user {
+  width: auto;
+  line-height: 67rpx;
+  font-size: 0;
+}
+
+.comments image {
+  float: left;
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 17rpx;
+  border-radius: 50%;
+}
+
+.comments .info image {
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 17rpx;
+  margin-left: 30rpx;
+  border-radius: 50%;
+}
+
+.comments .nickname {
+  height: auto;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+
+.comments .time {
+  display: block;
+  width: auto;
+  height: auto;
+  line-height: 36rpx;
+  color: #808080;
+  font-size: 20rpx;
+  margin-right: 30rpx;
+}
+
+.comments .content {
+  width: auto;
+  padding-right: 30rpx;
+  padding-left: 100rpx;
+  line-height: 36rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.comments .imgs {
+  width: auto;
+  height: auto;
+  margin-bottom: 25rpx;
+}
+
+.comments .imgs .img {
+  height: 150rpx;
+  width: 150rpx;
+  margin-right: 28rpx;
+}
+
+.comments .spec {
+  width: 720rpx;
+  padding-right: 30rpx;
+  line-height: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.reply {
+  padding-left: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-top: 2rpx solid #ccc;
+}
+
+.reply text {
+  font-size: 20rpx;
+}
+
+.btnGo {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.btnGo .btn {
+  background: #2bbcd9;
+  color: #fff;
+  border-radius: 0px;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}
+
+.nextStep {
+  display: flex;
+}
+
+.nextStep .btn-price {
+  width: 50%;
+  background: #f2f2f2;
+  color: #2bbcd9;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}
+
+.nextStep .btn-next {
+  width: 50%;
+  background: #2bbcd9;
+  color: #fff;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  border-radius: 0rpx;
+}
+
+.attr-pop-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8;
+  bottom: 0;
+}
+
+.attr-pop {
+  width: 100%;
+  height: auto;
+  max-height: 780rpx;
+  min-height: 400rpx;
+  background: #fff;
+  position: fixed;
+  z-index: 9;
+  bottom: 100rpx;
+}
+
+.attr-pop .close {
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  right: 30rpx;
+  overflow: hidden;
+  top: 20rpx;
+}
+
+.attr-pop .close .icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.spec-con {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.spec-con .price {
+  height: 110rpx;
+  line-height: 160rpx;
+  font-size: 28rpx;
+  color: #2bbcd9;
+  padding-left: 30rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.spec-con .value.disable {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.spec-con .value.selected {
+  border: 1px solid #4196fa;
+  color: #4196fa;
+}
+
+.number-item {
+  padding: 0rpx 30rpx 30rpx 30rpx;
+}
+
+.number-item .selnum {
+  width: 160rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+}
+
+.number-item .setnum {
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.number-item .cut {
+  width: 32rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 32rpx;
+  background: #808080;
+  color: #fff;
+}
+
+.number-item .number {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  line-height: 32rpx;
+  float: left;
+  color: #2bbcd9;
+}
+
+.number-item .add {
+  width: 32rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 32rpx;
+  background: #808080;
+  color: #fff;
+}
+
+.number-item .name {
+  margin-top: 40rpx;
+}
+
+.number-item .phone {
+  margin-top: 20rpx;
+}
+
+.number-item .input {
+  border: 2rpx solid #808080;
+  min-height: 57rpx;
+  margin-top: 20rpx;
+}
+
+.placeholder {
+  font-size: 20rpx;
+  font-weight: 400;
+  line-height: 36px;
+  color: #808080;
+}
+
+.surplus {
+  margin-left: 40rpx;
+}
+
+.openReg {
+  text-align: center;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.details-boby {
+  background: #fff;
+}
+
+.details-right{
+  width: 28rpx;
+}
+
+.details-right image {
+  width: 28rpx;
+  height: 64rpx;
+}
+
+.details-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 0rpx 30rpx;
+  line-height: 64rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.details-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  padding: 0rpx 30rpx;
+  line-height: 64rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.input input{
+  padding: 0rpx 20rpx;
+}
+
+.input-text-box {
+  padding: 32rpx;
+  height: 200rpx;
+  background: #fafafa;
+  z-index: 1;
+}
+
+.comment-nickname{
+  margin: 10rpx 30rpx;
+}
+
+.textarea{
+  width: auto;
+  height: 200rpx;
+}
+
+.detail {
+  width: 750rpx;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+}
+
+.detail image {
+  width: 750rpx;
+  display: block;
+}
+
+.input-text-btn{
+  width: 60%;
+  margin: auto;
+}
+
+.input-text-btn button{
+  border-radius: 100rpx;
+}

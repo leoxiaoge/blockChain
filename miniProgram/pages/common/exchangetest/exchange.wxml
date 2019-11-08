@@ -1,0 +1,23 @@
+<navigator url="/pages/goods/goods?id={{orderid}}" class="a">
+<view class='list-group'>
+  <view class='list-left'>
+    <image src='{{images}}' class='img' mode="widthFix"></image>
+  </view>
+  <view class='list-right'>
+    <view class='title'>{{title}}</view>
+    <view class='rule'>{{rule}}</view>
+    <view class='price-box'>
+      <view class='desc'>￥<text class='price'>{{price}}</text></view>
+      <view wx:if="{{suk > 0}}">
+          <view class='exchange'>
+            <button class='btn' bindtap='exchange'>立即购买</button>
+          </view>
+      </view>
+      <view wx:else >
+         <view class='kong' >已售空</view>
+      </view>
+      
+    </view>
+  </view>
+</view>
+</navigator>

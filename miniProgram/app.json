@@ -1,0 +1,92 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/ucenter/resume/resume",
+    "pages/release_resume/release_resume",
+    "pages/college/college",
+    "pages/release_edit/release_edit",
+    "pages/position_edit/position_edit",
+    "pages/resume_user_info/resume_user_info",
+    "pages/resume_userinfo/resume_userinfo",
+    "pages/resume_newdetails/resume_newdetails",
+    "pages/company/company",
+    "pages/community/community",
+    "pages/resume_content/resume_content",
+    "pages/position_content/position_content",
+    "pages/release_describe/release_describe",
+    "pages/position_details/position_details",
+    "pages/resume_details/resume_details",
+    "pages/release_position/release_position",
+    "pages/search/search",
+    "pages/homework/homework",
+    "pages/release/release",
+    "pages/application/application",
+    "pages/ucenter/ucenter",
+    "pages/initiator/initiator",
+    "pages/community_details/community_details",
+    "pages/details/details",
+    "pages/payment/payment",
+    "pages/courseslist/courseslist",
+    "pages/ucenter/card/card",
+    "pages/ucenter/curriculum/curriculum",
+    "pages/ucenter/news/news",
+    "pages/ucenter/collection/collection",
+    "pages/ucenter/recruit/recruit",
+    "pages/ucenter/activity/activity",
+    "pages/ucenter/distribution/distribution",
+    "pages/ucenter/distribution_data/distribution_data",
+    "pages/ucenter/wallet/wallet",
+    "pages/ucenter/apply/apply",
+    "pages/ucenter/bring/bring",
+    "pages/ucenter/team/team"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#2BBCD9",
+    "navigationBarTitleText": "链宇宙学院",
+    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "backgroundColor": "#F2F2F2",
+    "borderStyle": "white",
+    "selectedColor": "#2BBCD9",
+    "color": "#808080",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index_hover.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "iconPath": "/images/community.png",
+        "selectedIconPath": "/images/community_hover.png",
+        "text": "社区活动"
+      },
+      {
+        "pagePath": "pages/college/college",
+        "iconPath": "/images/college.png",
+        "selectedIconPath": "/images/college_hover.png",
+        "text": "学院服务"
+      },
+      {
+        "pagePath": "pages/ucenter/ucenter",
+        "iconPath": "/images/ucenter.png",
+        "selectedIconPath": "/images/ucenter_hover.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

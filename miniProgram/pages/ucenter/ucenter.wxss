@@ -1,0 +1,46 @@
+/* pages/ucenter/ucenter.wxss */
+page{
+  background: #fff;
+}
+
+.container{
+  background: #fff;
+}
+
+.userinfo {  
+  position: relative;
+  color: #000;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2rpx solid #CCCCCC;  
+}  
+  
+.userinfo-avatar {  
+  overflow:hidden;  
+  display: block;  
+  width: 120rpx;  
+  height: 120rpx;  
+  margin: 20rpx;
+  border-radius: 50%;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.userinfoName{
+  margin-top: 10rpx;
+  color: #808080;
+}
+
+.ucenter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rpx 20rpx;
+  height: 80rpx;
+  border-bottom: 2rpx solid #CCCCCC;
+}
+
+.ucenter-right image{
+  width: 44rpx;
+  height: 44rpx;
+}

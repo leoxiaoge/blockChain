@@ -1,0 +1,71 @@
+/* pages/payment/payment.wxss */
+page{
+  background: #fff;
+}
+
+.container {
+  margin-bottom: 100rpx;
+}
+
+.payment{
+  padding: 0rpx 30rpx;
+  border-bottom: 2rpx solid #ccc;
+  background: #fff;
+}
+
+.payment-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx 0rpx;
+}
+
+.payment-header image{
+  width: 150rpx;
+}
+
+.payment-header .payment-title{
+  font-size: 32rpx;
+  font-weight:500;
+}
+
+.payment-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-btn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  background: #fff;
+}
+
+.bottom-btn .c {
+  float: left;
+  background: #2bbcd9;
+  line-height: 96rpx;
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.bottom-btn .r {
+  background: #f2f2f2;
+  float: left;
+  line-height: 96rpx;
+  flex: 1;
+  text-align: center;
+  color: #2bbcd9;
+}

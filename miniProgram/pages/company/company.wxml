@@ -1,0 +1,76 @@
+<!--pages/company/company.wxml-->
+<view class="container">
+  <view class="company">
+    <view class="company-left">
+      <view class="company-name">{{company.company_name}}</view>
+      <view class="company-content">{{company.financing}}·{{company.staff_size}}·{{company.financing}}</view>
+    </view>
+    <view class="company-image" bindtap="previewImage" data-src="{{company.company_logo}}">
+      <image src="{{company.company_logo}}"></image>
+    </view>
+  </view>
+  <view class="nav-warp">
+    <view class="tab">
+      <block wx:for="{{navItem}}" wx:key="index">
+        <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+          <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+        </view>
+      </block>
+      <view class="line"></view>
+    </view>
+  </view>
+  <block wx:if="{{showItem == 1}}">
+    <view class="company-introduce">
+      <view class="company-introduce-name">公司介绍</view>
+      <view class="company-introduce-content">
+        <import src="/lib/wxParse/wxParse.wxml" />
+        <template is="wxParse" data="{{wxParseData:companyDetail.nodes}}" />
+      </view>
+    </view>
+    <view class="company-address">
+      <view class="company-name">公司地址</view>
+      <view class="company-text">{{company.province}}{{company.city}}{{company.zone}}{{company.address}}</view>
+    </view>
+    <view class="company-information">
+      <view class="company-information-text">工商信息</view>
+      <view class="company-flex company-set">
+        <view class="company-time">成立时间</view>
+        <view class="company-set_time">{{company.set_time}}</view>
+      </view>
+      <view class="company-flex company-registered">
+        <view class="company-capital">注册资本</view>
+        <view class="company-registered_capital">{{company.registered_capital}}万元</view>
+      </view>
+      <view class="company-flex company-legal">
+        <view class="company-person">法人代表</view>
+        <view class="company-legal_person">{{company.legal_person}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="college" wx:for="{{company.posts}}" wx:key="id">
+      <view class="college-body" bindtap="collegeDetails" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">
+        <view class="college-image">
+          <image src="{{company.company_logo}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-t">
+            <text class="college-title">{{item.posts_name}}</text>
+            <text class="college-salary">{{item.min_salary}}K-{{item.max_salary}}K</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.company.company_name}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.experience}}</text>
+            <text class="college-title">{{item.education}}</text>
+            <text class="college-time">{{item.add_time}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-address">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/ucenter/team/team.wxml-->
+<view class="container">
+  <view class="nav-warp">
+    <view class="tab">
+      <block wx:for="{{navItem}}" wx:key="index">
+        <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+          <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+        </view>
+      </block>
+      <view class="line"></view>
+    </view>
+  </view>
+  <view class="team" wx:for="{{data}}">
+    <view class="team-img">
+      <image src="{{item.head_pic}}"></image>
+    </view>
+    <view class="team-content">
+      <view class="team-name">{{item.nickname}}</view>
+      <view class="team-time">注册时间：{{item.created_at}}</view>
+    </view>
+  </view>
+  <view class="order_none" wx:if="{{data.length <= 0 ? true:false}}">
+    <image src="/images/team.png" class="order_none_img" mode='widthFix'></image>
+    <text class="order_none_tex">哎呀,您还没有{{navItem[showItem - 1]}}呢</text>
+  </view>
+</view>

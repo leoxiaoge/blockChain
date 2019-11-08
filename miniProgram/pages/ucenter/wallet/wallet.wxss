@@ -1,0 +1,120 @@
+/* pages/ucenter/wallet/wallet.wxss */
+.nav-warp .active text {
+  color: #2bbcd9;
+}
+
+.nav-warp {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow: hidden;
+}
+
+.nav-warp .tab {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-txt {
+  text-align: center;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+  width: 50%;
+  float: left;
+  height: 90rpx;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+
+.tab {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.wallet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 26rpx 20rpx;
+}
+
+.walletBtn {
+  line-height: 40rpx;
+  background: #fff;
+}
+
+.btn {
+  width: 100rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  color: #2bbcd9;
+  line-height: 40rpx;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: #fff;
+  border-radius: 40rpx;
+  border: 2rpx solid #2bbcd9;
+}
+
+.wallet-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.wallet-data{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  border-top: 2rpx solid #ccc;
+}
+
+.wallet-index{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.wallet-time{
+  font-size: 20rpx;
+  color: #808080;
+}
+
+.wallet-price-type text{
+  color: #2BBCD9
+}
+
+.walletBring{
+  position: fixed;
+  right: 0;
+  bottom: 200rpx;
+}
+
+
+.bring{
+  width: 140rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  color: #2bbcd9;
+  line-height: 50rpx;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: #fff;
+  border-radius: 40rpx 0rpx 0rpx 40rpx; 
+  border-left: 2rpx solid #2bbcd9;
+  border-top: 2rpx solid #2bbcd9;
+  border-bottom: 2rpx solid #2bbcd9;
+}

@@ -1,0 +1,28 @@
+<view class="container">
+    <view class="address-list" wx:if="{{ addressList.length > 0 }}">
+        <view class="item" wx:for="{{addressList}}" wx:key="id" bindtap="addressAddOrUpdate" data-address-id="{{item.id}}">
+            <view class="l">
+                <view class="name">{{item.name}}</view>
+                <view class="default" wx:if="{{item.isDefault}}">默认</view>
+            </view>
+            <view class="c">
+                <view class="mobile">{{item.mobile}}</view>
+                <view class="address">{{item.detailedAddress}}</view>
+            </view>
+            <view class="r">
+                <image catchtap="deleteAddress" data-address-id="{{item.id}}" class="del" src="/static/images/del-address.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{ addressList.length <= 0 }}">
+      <image class="icon" src="https://javaapi.lanwang168.com/wx/storage/fetch/qoaxdjcpyvcrv7ed6s9x.png"></image>
+      <text class="text">您还没有可以用收货地址喔~</text>
+    </view>
+    <view class="address">
+      <view class="add-icon">
+        <image class="addicon" src="/static/images/addicon.png"></image>
+      </view>
+      <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">新建地址</view>
+    </view>
+    
+</view>

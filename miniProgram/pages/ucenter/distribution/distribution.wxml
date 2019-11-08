@@ -1,0 +1,63 @@
+<!--pages/ucenter/distribution/distribution.wxml-->
+<view class="container">
+  <view class="distribution" bindtap="team">
+    <text>我的团队</text>
+    <image src="{{right}}"></image>
+  </view>
+  <view class="distribution" bindtap="distributionData">
+    <text>分销数据</text>
+    <image src="{{right}}"></image>
+  </view>
+  <view class="distribution" bindtap="toggleDialog">
+    <text>我要推荐</text>
+    <image src="{{right}}"></image>
+  </view>
+
+  <view class="mask-show {{ showDialog ? 'show' : '' }}">
+    <view class="mask" catchtap="toggleDialog" catchtouchmove="preventTouchMove" />
+    <view class="mask-content">
+      <view class="mask-header">
+        <image src="{{cancel}}" bindtap="toggleDialog"></image>
+        <text>我要推荐</text>
+        <image src="{{determine}}" bindtap="goPoster"></image>
+      </view>
+      <view class="mask-body">
+        <text>邀请好友入学链宇宙学院，好友在学院产生课程购买，可获取该课程单价15%的返利（一级粉丝），课程单价5%返利（二级粉丝）。</text>
+      </view>
+      <view class="mask-footer">
+        <view class="mask-image">
+          <button class="mask-share" open-type="share">
+            <view class="mask-img">
+              <image src="/images/wechat.png"></image>
+            </view>
+          </button>
+          <text>微信好友</text>
+        </view>
+        <view class="mask-image">
+          <view class="mask-img" bindtap="goPoster">
+            <image src="/images/poster.png"></image>
+          </view>
+          <text>生成海报</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="poster"  hidden="{{!poster}}">
+  <view class="poster" catchtap="noposter" catchtouchmove="preventTouchMove"></view>
+    <view class="poster-canvas">
+      <canvas canvas-id='myCanvas' class='myCanvas'></canvas>
+    </view>
+    <view class="poster-btn">
+      <view class="poster-canvas">
+        <cover-view class="btn">
+          <button class="share" open-type="share">
+            分享
+          </button>
+          <button class="preservation" bindtap="saveImage">
+            保存图片
+          </button>
+        </cover-view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,259 @@
+<view class="container">
+  <view class="profile-info" bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="info">
+      <text class="name">{{userInfo.nickName}}</text>
+    </view>
+    <!-- 商家认证 -->
+    <view class="authentication">
+      <view class="authentication-image">
+        <image src="{{vip}}"></image>
+      </view>
+      <view class="business">商家认证</view>
+    </view>
+  </view>
+  <view class='header'>
+    <view class='myOrder-icon'>
+      <view class='one-icon' bindtap="goOrder" data-showType="1" data-status="0">
+        <image src='/images/group0.png'></image>
+        <view class='one-icon-text'>
+          待付款
+        </view>
+        <block wx:for="{{remind}}">
+          <block wx:if="{{item.status == 0}}">
+            <block wx:if="{{item.num != 0}}">
+              <view class='num'>{{item.num}}</view>
+            </block>
+            <block wx:else>
+              <view class='nonum'></view>
+            </block>
+          </block>
+          <block wx:else>
+            <view class='nonum'></view>
+          </block>
+        </block>
+      </view>
+      <view class='one-icon one-icon-middle' bindtap="goOrder" data-showType="2" data-status="1">
+        <image src='/images/group1.png'></image>
+        <view class='one-icon-text'>
+          待发货
+        </view>
+        <block wx:for="{{remind}}">
+          <block wx:if="{{item.status == 1}}">
+            <block wx:if="{{item.num != 0}}">
+              <view class='num'>{{item.num}}</view>
+            </block>
+            <block wx:else>
+              <view class='nonum'></view>
+            </block>
+          </block>
+          <block wx:else>
+            <view class='nonum'></view>
+          </block>
+        </block>
+      </view>
+      <view class='one-icon one-icon-middle' bindtap="goOrder" data-showType="3" data-status="2">
+        <image src='/images/group2.png'></image>
+        <view class='one-icon-text'>
+          待收货
+        </view>
+        <block wx:for="{{remind}}">
+          <block wx:if="{{item.status == 2}}">
+            <block wx:if="{{item.num != 0}}">
+              <view class='num'>{{item.num}}</view>
+            </block>
+            <block wx:else>
+              <view class='nonum'></view>
+            </block>
+          </block>
+          <block wx:else>
+            <view class='nonum'></view>
+          </block>
+        </block>
+      </view>
+      <view class='one-icon one-icon-middle' bindtap="goOrder" data-showType="4" data-status="3">
+        <image src='/images/group3.png'></image>
+        <view class='one-icon-text'>
+          已完成
+        </view>
+        <block wx:for="{{remind}}">
+          <block wx:if="{{item.status == 3}}">
+            <block wx:if="{{item.num != 0}}">
+              <view class='num'>{{item.num}}</view>
+            </block>
+            <block wx:else>
+              <view class='nonum'></view>
+            </block>
+          </block>
+          <block wx:else>
+            <view class='nonum'></view>
+          </block>
+        </block>
+
+      </view>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class='myPrivilege' bindtap="goCoupon">
+      <view class='myPrivilege-text'>
+        <image src='/images/coupon.png'></image>优惠券
+      </view>
+      <image src='/images/right.png'></image>
+    </view>
+    <view class='myPrivileges' bindtap="authentication">
+      <view class='myPrivilege-text'>
+        <image src='/images/business.png'></image>商家认证
+      </view>
+      <block wx:if="{{isShopauth == 0}}">
+        <view class='uncertified'>
+          <view class='un-image'>
+            <view class='un-images'>
+              <image src='/images/ungroup.png'></image>
+            </view>
+            <view class='un-text'>未认证</view>
+          </view>
+          <view class='un-right'>
+            <image src='/images/right.png'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{isShopauth == 2}}">
+        <view class='uncertified'>
+          <view class='uns-image'>
+            <view class='un-images'>
+              <image src='/images/Group.png'></image>
+            </view>
+            <view class='un-texts'>已认证</view>
+          </view>
+          <view class='un-right'>
+            <image src='/images/right.png'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{isShopauth == 1}}">
+      <view class='uncertified'>
+        <view class='audit-image'>
+          <view class='un-images'>
+            <image src='/images/audit.png'></image>
+          </view>
+          <view class='audit-text'>审核中</view>
+        </view>
+        <view class='un-right'>
+          <image src='/images/right.png'></image>
+        </view>
+      </view>
+      </block>
+
+
+    </view>
+    <view class='myPrivilege' bindtap="goAddress">
+      <view class='myPrivilege-text'>
+        <image src='/images/address.png'></image>地址管理
+      </view>
+      <image src='/images/right.png'></image>
+    </view>
+    <view class='myPrivilege' bindtap="aboutUs">
+      <view class='myPrivilege-text'>
+        <image src='/images/about.png'></image>关于我们
+      </view>
+      <image src='/images/right.png'></image>
+    </view>
+    <button class="items" bindtap="toggleDialog">
+      <view class='myPrivilege'>
+        <view class='myPrivilege-text'>
+          <image src='/images/contact.png'></image>联系客服
+        </view>
+        <view class='tel-times'>
+          <view class='times'>
+            <view class='tel'>{{tel}}</view>
+            <view class='time'>服务时间：{{serviceTime}}</view>
+          </view>
+          <view class='right'>
+            <image src='/images/right.png'></image>
+          </view>
+        </view>
+      </view>
+    </button>
+
+  </view>
+
+  <!-- <view class='consultation'>
+  <view class='consult'>
+    <image src='/images/consult.png'></image>
+    </view>
+</view>
+
+
+
+
+
+
+
+  <view class="user-menu">
+    <view class="item">
+      <view class="a" bindtap="goOrder">
+        <text class="icon order"></text>
+        <text class="txt">我的订单</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goCoupon">
+        <text class="icon coupon"></text>
+        <text class="txt">优惠券</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goCollect">
+        <image class="user-menu .icon.collect" src="/static/images/icon_collect.png"></image>
+        <text class="txt">我的收藏</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goFootprint">
+        <image class="user-menu .icon.collect" src="/static/images/foot.png"></image>
+        <text class="txt">我的足迹</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goAddress">
+        <text class="icon address"></text>
+        <text class="txt">地址管理</text>
+      </view>
+    </view>
+    <button class="item" open-type="contact" size="20" session-from="weapp">
+      <view class="a">
+        <text class="icon kefu"></text>
+        <text class="txt">联系客服</text>
+      </view>
+    </button>
+    <button class="item" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+      <view class="a">
+        <image class="user-menu .icon.phone" src="/static/images/mobile.png"></image>
+        <text class="txt">绑定手机号码</text>
+      </view>
+    </button>
+    <view class="item">
+      <view class="a" bindtap="aboutUs">
+        <image class="user-menu .icon.collect" src="/static/images/about_us.png"></image>
+        <text class="txt">关于我们</text>
+      </view>
+    </view>
+  </view> -->
+
+
+  <!--<view class="logout" bindtap="exitLogin">退出登录</view>-->
+</view>
+
+<view class="free-dialog {{ showDialog ? 'free-dialog--show' : '' }}">
+  <view class="free-dialog__mask" />
+  <view class="free-dialog__container">
+    <view>
+      <form bindsubmit='submit' bindreset="reset">
+        <view class="tels">{{tel}}</view>
+        <view class="call" bindtap="calling">呼叫</view>
+        <view class="cancel" bindtap="toggleDialog">取消</view>
+      </form>
+    </view>
+  </view>
+</view>

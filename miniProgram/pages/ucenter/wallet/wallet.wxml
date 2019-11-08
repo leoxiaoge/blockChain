@@ -1,0 +1,40 @@
+<!--pages/ucenter/wallet/wallet.wxml-->
+<view class="container">
+  <view class="wallet">
+    <view class="wallet-money">
+      <view>我的佣金</view>
+      <view>{{user.commission? '￥' + user.commission: '0.00'}}</view>
+    </view>
+    <view class="walletBtn">
+      <button class="btn" bindtap="apply">提现</button>
+    </view>
+  </view>
+  <block wx:if="{{list.length > 0}}">
+    <view class="wallet-title">
+      <view>佣金费用明细</view>
+    </view>
+    <view class=" {{index == 0?  'wallet-index': 'wallet-data'}}" wx:for="{{list}}" wx:key="*this">
+      <view class="wallet-left">
+        <view class="wallet-name">{{item.shop_name}}</view>
+        <view class="wallet-time">{{item.created_at}}</view>
+      </view>
+      <block wx:if="{{item.transaction_type == 1}}">
+        <view class="wallet-price-type">
+          <text>+￥{{item.commission_amount}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="wallet-price">
+          <text>-￥{{item.commission_amount}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+  <view class="walletBring">
+    <button class="bring" bindtap="bring">提现明细</button>
+  </view>
+  <view class="order_none" wx:if="{{list.length <= 0 ? true:false}}">
+    <image src="/images/cost.png" class="order_none_img" mode='widthFix'></image>
+    <text class="order_none_tex">哎呀,暂时还没有佣金费用明细呢</text>
+  </view>
+</view>

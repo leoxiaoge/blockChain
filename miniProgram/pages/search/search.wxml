@@ -1,0 +1,116 @@
+<!--pages/search/search.wxml-->
+<scroll-view class="container" style="height: 100%;">
+  <view class="search-header">
+    <view class="left" bindtap="closeSearch">{{city}}</view>
+    <view class="input-box">
+      <input name="input" class="keywrod" value="{{keyword}}" confirm-type="search" bindblur="bindBlur" maxlength="20" placeholder="输入活动关键字进行搜索" />
+      <image class="del" wx:if="{{keyword}}" bindtap="clearKeyword" src="/images/cancel.png"></image>
+    </view>
+    <view class="right" bindtap="closeSearch">取消</view>
+  </view>
+  <view class="no-search" wx:if="{{!searchStatus}}">
+    <view class="search-keywords search-hot" wx:if="{{!keyword && suggest.length}}">
+      <view class="h">
+        <text class="title">搜索建议</text>
+      </view>
+      <view class="search-proposal">
+        <view class="item {{searchId == item.search_id ? 'active' : ''}}" data-id="{{item.search_id}}" bindtap="onKeywordTap" data-keyword="{{item.search_name}}" wx:for="{{suggest}}" wx:key="id">{{item.search_name}}</view>
+      </view>
+    </view>
+    <view class="search-keywords search-history" wx:if="{{!keyword  && record.length}}">
+      <view class="h">
+        <text class="title">最近搜索</text>
+      </view>
+      <view class="recent-search" bindtap="onKeywordTapUp" data-id="{{item.search_id}}" data-keyword="{{item.search_name}}" wx:for="{{record}}" wx:key="id">
+        <view class="items">
+          <image class="icon" src="/images/search.png"></image>
+          <text>{{item.search_name}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="clearHistory" bindtap="clearHistory">清除搜索记录</view>
+  </view>
+  <view class="community" wx:for="{{events}}" wx:key="id">
+    <view class="community-body" data-id="{{item.event_id}}" data-title="{{item.event_title}}" bindtap="communityDetails">
+      <view class="community-image">
+        <image src="{{item.event_img}}" mode='widthFix'></image>
+      </view>
+      <view class="community-right">
+        <view class="community-t">
+          <text class="community-title">{{item.event_name}}</text>
+          <text class="community-num">报名人数:{{item.apply_num}}/{{item.join_num}}</text>
+        </view>
+        <block wx:if="{{types == 1}}">
+          <view class="community-kong"></view>
+        </block>
+        <block wx:else>
+          <view class="community-end">
+            <text>已结束</text>
+          </view>
+        </block>
+        <view class="community-price">费用:{{item.event_fee}}元/人</view>
+        <view class="community-place">活动地点：</view>
+        <view class="community-place-t">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</view>
+      </view>
+    </view>
+    <view class="community-time">
+      <text>起止时间：{{item.start_time}}-{{item.end_time}}</text>
+    </view>
+  </view>
+  <view class="search-result-empty" wx:if="{{!events.length && !lists.length && !posts.length && searchStatus}}">
+    <image class="icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noSearchResult-7572a94f32.png"></image>
+    <text class="text">没有搜索到相关的页面</text>
+  </view>
+  <!-- 职位简历 -->
+  <block wx:if="{{posts}}">
+    <view class="college" wx:for="{{posts}}" wx:key="id">
+      <view class="college-body" bindtap="collegeDetails" data-id="{{showItem}}" data-posts_id="{{item.posts_id}}" data-title="{{item.posts_name}}">
+        <view class="college-image">
+          <image src="{{item.company.company_logo}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-t">
+            <text class="college-title">{{item.posts_name}}</text>
+            <text class="college-salary">{{item.min_salary}}K-{{item.max_salary}}K</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.company.company_name}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.experience}}</text>
+            <text class="college-title">{{item.education}}</text>
+            <text class="college-time">{{item.add_time}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-address">{{item.province}}{{item.city}}{{item.zone}}{{item.address}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{lists}}">
+    <view class="college" wx:for="{{lists}}" wx:key="*this">
+      <view class="college-body" bindtap="collegeDetails" data-id="{{showItem}}" data-resume_id="{{item.resume_id}}" data-title="{{item.user.real_name}}">
+        <view class="college-image">
+          <image src="{{item.user.avatar}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-s">
+            <text class="college-title">{{item.user.real_name}}</text>
+            <text class="college-sex">{{item.user.sex}}</text>
+            <text class="college-year">{{item.user.age}}岁</text>
+            <text class="college-education">{{item.user.education}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">意向职位<text>{{item.duty_name}}</text></text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">工作年限</text>
+            <text class="college-title">{{item.user.experience}}</text>
+            <text class="college-time">{{item.add_time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>

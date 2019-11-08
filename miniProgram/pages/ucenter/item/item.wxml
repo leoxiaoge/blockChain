@@ -1,0 +1,60 @@
+ <view class="body">
+      <view class="nav bc_white">
+        <view class="{{selected ==-1?'red':'default'}}" data-id="-1" bindtap="selected">全部</view>
+        <view class="{{selected ==0?'red':'default'}}" data-id="0" bindtap="selected">审核中</view>
+        <view class="{{selected ==4?'red':'default'}}" data-id="4" bindtap="selected">提现成功</view>
+        <view class="{{selected ==2?'red':'default'}}" data-id="2" bindtap="selected">提现失败</view>  
+      </view>
+      <view class="show">
+        <view class='whole'wx:for="{{withdrawList}}" wx:key="index">
+          <view  class='whole-1'>
+            <view  class='whole-m'>提现金额：
+              <text>{{item.amount}}</text>
+            </view>
+            <view  class='whole-o'>申请日期：
+              <text>{{item.created_at}}</text>
+            </view>
+          </view>
+          <view class='whole-2'>
+            <view  class='whole-n' wx:if="{{item.status != '审核不通过' || item.status != '提现异常'}}">{{item.status}}</view>
+            <view  class='whole-n whole-s' wx:else>
+              <image src='../../images/pic_tixianshibai.png@2x.png'></image>
+            {{item.status}}</view>
+            <view  class='whole-e'>{{item.withdraw_type}}</view>
+          </view>
+        </view>
+        <!-- <view class='whole'>
+          <view  class='whole-1'>
+            <view  class='whole-m'>提现金额：
+              <text>2000.00</text>
+            </view>
+            <view  class='whole-o'>申请日期：
+              <text>2018.08.22</text>
+            </view>
+          </view>
+          <view class='whole-2'>
+            <view  class='whole-n'>审核中</view>
+            <view  class='whole-e'>微信提现</view>
+          </view>
+        </view>
+        <view class='whole'>
+          <view  class='whole-1'>
+            <view  class='whole-m'>提现金额：
+              <text>2000.00</text>
+            </view>
+            <view  class='whole-o'>申请日期：
+              <text>2018.08.22</text>
+            </view>
+          </view>
+          <view class='whole-2'>
+            <view  class='whole-n whole-s'>
+              <image src='../../images/pic_tixianshibai.png@2x.png'></image>
+            提现失败</view>
+            <view class='sbs'>1111111111</view>
+            <view  class='whole-e'>微信提现</view>
+          </view>
+        </view> -->
+      </view>
+
+      
+    </view>

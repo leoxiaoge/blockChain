@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="tx">
+    <view class="tx-money">可提现金额：
+      <text>{{user.commission? '￥' + user.commission: '0.00'}}</text>
+    </view>
+  </view>
+  <view class="ap-mon">
+    <text>￥</text>
+    <input type="number" value="" placeholder="输入提现金额" bindinput="amount" maxlength="10"></input>
+  </view>
+  <view class="ts">提现金额不能低于100.00</view>
+  <view class="fs">
+    <view class="fs-h">提现方式</view>
+    <view class="body">
+      <view class="nav bc_white">
+        <view class="{{selected?'red':'default'}}" bindtap="selected">
+          <view class="fscont">
+            <view class="zfb">
+              <image src="/images/bankCard.png" mode="widthFix"></image>
+              <view>银行卡</view>
+            </view>
+          </view>
+        </view>
+        <view class="{{selected1?'red':'default'}}" bindtap="selected1">
+          <view class="fscont">
+            <view class="c">
+              <image src="/images/wechatCard.png" mode="widthFix"></image>
+              <view>微信</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="{{selected?'show':'hidden'}}">
+        <view class="input-1">
+          <label>
+            <text>*</text>开户人</label>
+          <input value="" placeholder="请输入正确的姓名" bindinput="open_bank_name" maxlength="10"></input>
+        </view>
+        <view class="input-1">
+          <label>
+            <text>*</text>开户行</label>
+          <input value="" placeholder="请输入正确的银行名称" bindinput="open_bank_card"></input>
+        </view>
+        <view class="input-1">
+          <label>
+            <text>*</text>账 号</label>
+          <input value="" placeholder="请输入正确的银行卡号" bindinput="bank_account"></input>
+        </view>
+        <view class="s-b" bindtap="withdraw">提交申请</view>
+      </view>
+      <view class="{{selected1?'show':'hidden'}}">
+        <view class="ts">微信提现将提现到微信钱包</view>
+        <view class="tj" bindtap="withdraw">提交申请</view>
+      </view>
+    </view>
+  </view>
+</view>

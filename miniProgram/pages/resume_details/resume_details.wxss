@@ -1,0 +1,6 @@
+/* pages/resume_details/resume_details.wxss */
+@import '../position_content/position_content.wxss';
+.recommend-name{
+  padding: 10rpx 20rpx;
+  background: #fff;
+}

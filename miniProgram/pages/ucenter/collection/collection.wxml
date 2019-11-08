@@ -1,0 +1,71 @@
+<!--pages/ucenter/collection/collection.wxml-->
+<view class="container">
+  <view class="nav-warp">
+    <view class="tab">
+      <block wx:for="{{navItem}}" wx:key="index">
+        <view data-id="{{index}}" class="tab-txt {{showItem == index ? 'active' : '' }} " style="position: relative;">
+          <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+        </view>
+      </block>
+      <view class="line"></view>
+    </view>
+  </view>
+  <block wx:if="{{showItem == 0}}">
+    <view class="college" wx:for="{{lists}}" wx:key="*this">
+      <view class="college-body" bindtap="collegeDetails" data-resume_id="{{item.resume_id}}" data-title="{{item.user.real_name}}">
+        <view class="college-image">
+          <image src="{{item.resume.user.avatar}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-s">
+            <text class="college-title">{{item.resume.user.real_name}}</text>
+            <text class="college-sex">{{item.resume.user.sex == 1?'男':'女'}}</text>
+            <text class="college-year">{{item.resume.user.age}}岁</text>
+            <text class="college-education">{{item.resume.user.education}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">意向职位<text>{{item.resume.duty_name}}</text></text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">工作年限</text>
+            <text class="college-title">{{item.resume.user.experience}}</text>
+            <text class="college-time">{{item.resume.add_time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="college" wx:for="{{lists}}" wx:key="id">
+      <view class="college-body" bindtap="collegeDetails" data-id="{{showItem}}" data-posts_id="{{item.posts.posts_id}}" data-title="{{item.posts.posts_name}}">
+        <view class="college-image">
+          <image src="{{item.posts.company.company_logo}}"></image>
+        </view>
+        <view class="college-right">
+          <view class="college-t">
+            <text class="college-title">{{item.posts.posts_name}}</text>
+            <text class="college-salary">{{item.posts.min_salary}}K-{{item.posts.max_salary}}K</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.posts.company.company_name}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-title">{{item.posts.experience}}</text>
+            <text class="college-title">{{item.posts.education}}</text>
+            <text class="college-time">{{item.posts.add_time}}</text>
+          </view>
+          <view class="college-t">
+            <text class="college-address">{{item.posts.province}}{{item.posts.city}}{{item.posts.zone}}{{item.posts.address}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block>
+    <view class="order_none" wx:if="{{lists.length <= 0 ? true:false}}">
+      <image src="/images/collection.png" class="order_none_img" mode='widthFix'></image>
+      <text class="order_none_tex">哎呀,您还没有收藏{{navItem[showItem]}}呢</text>
+      <button class="btn setting" type="primary" bindtap="collection">去收藏</button>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,236 @@
+/* pages/courseslist/courseslist.wxss */
+
+.good-grid {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.good-grid .header {
+  background: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  color: #333;
+  padding: 20rpx 30rpx 0rpx 30rpx;
+  border-top: 1rpx solid #CCCCCC;
+}
+
+.good-grid .good-h-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.good-grid .good-h-title text{
+  font-size: 32rpx;
+}
+
+.good-grid .header .good-h-title image {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  width: 12rpx;
+  height: 16rpx;
+}
+
+.good-grid .body {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+}
+
+.good-grid .body .b-head {
+  border-top-width: 1rpx;
+  border-top-style: solid;
+  border-top-color: #e8e8e8;
+}
+
+.good-grid .body .item {
+  float: left;
+  background: #fff;
+  width: 345rpx;
+  margin-bottom: 6.25rpx;
+  height: 490rpx;
+  overflow: hidden;
+  text-align: center;
+}
+
+.good-grid .body .itemes {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  height: 244rpx;
+  overflow: hidden;
+}
+
+.good-grid .body .items {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  height: 244rpx;
+  overflow: hidden;
+  border-top: 1rpx solid #CCCCCC;
+}
+
+.good-grid .itemes .img {
+  margin-top: 20rpx;
+  height: 302rpx;
+}
+
+.good-grid .items .img {
+  margin-top: 20rpx;
+  height: 302rpx;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.good-grid .b .item .a {
+  height: 452rpx;
+  width: 100%;
+}
+
+.good-grid .b .item-b {
+  margin-left: 6.25rpx;
+}
+
+.good-grid .b .item-box {
+  margin-left: 30rpx;
+  border-top-width: 1rpx;
+  border-top-style: solid;
+  border-top-color: #e8e8e8;
+}
+
+.good-grid .item .img {
+  margin-top: 20rpx;
+  width: 302rpx;
+  height: 302rpx;
+}
+
+.good-grid .item .name {
+  display: block;
+  width: 300rpx;
+  padding: 0 20rpx;
+  overflow: hidden;
+  height: 80rpx;
+  margin: 11.5rpx 0 22rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.good-grid .item .price {
+  display: block;
+  width: 200rpx;
+  height: 30rpx;
+  font-size: 30rpx;
+  color: #e83a3b;
+}
+
+.good-grid .more-item {
+  height: 100%;
+  width: 100%;
+}
+
+.more-a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.good-grid .more-a .txt {
+  height: 33rpx;
+  width: 100%;
+  line-height: 33rpx;
+  color: #333;
+  font-size: 33rpx;
+}
+
+.good-grid .more-a .icon {
+  margin: 60rpx auto 0 auto;
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.area {
+  display: flex;
+}
+
+.area-img{
+  display: flex;
+  align-items: center;
+}
+
+.area-img image {
+  width: 180rpx;
+  height: 224rpx;
+}
+
+.area-words {
+  margin: 0rpx 10rpx 0rpx 30rpx;
+}
+
+.area-title {
+  font-size: 32rpx;
+  color: #37383c;
+  font-weight:500;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.area-name {
+  font-size: 24rpx;
+  color: #000000;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.area-names {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10rpx;
+}
+
+.area-price {
+  font-size: 20rpx;
+  color: #2BBCD9;
+}
+
+.pic {
+  font-size: 28rpx;
+  color: #2BBCD9;
+}
+
+.area-purchase {
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #2BBCD9;
+  border-radius: 100rpx;
+  border: 1rpx solid #2BBCD9;
+}
+
+.freeTrial{
+  margin-top: 20rpx;
+}
+
+.btn{
+  background-color:#FFFFFF;
+}

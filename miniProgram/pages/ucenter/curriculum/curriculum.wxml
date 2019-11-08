@@ -1,0 +1,54 @@
+<!--pages/ucenter/curriculum/curriculum.wxml-->
+<view class="container">
+  <view class="nav-warp">
+    <view class="tab">
+      <block wx:for="{{navItem}}" wx:key="index">
+        <view data-id="{{index+1}}" class="tab-txt {{showItem == index+1 ? 'active' : '' }} " style="position: relative;">
+          <text bindtap="navToggle" data-id="{{index}}">{{item}}</text>
+        </view>
+      </block>
+      <view class="line"></view>
+    </view>
+  </view>
+  <block wx:if="{{showItem == 1}}">
+    <view class="curriculum" wx:for="{{no}}" wx:key="id">
+      <view class="curriculum-header">
+        <view class="curriculum-image">
+          <image src="{{item.courses_img}}" mode="widthFix"></image>
+        </view>
+        <view class="curriculum-boby">
+          <view class="curriculum-p">{{item.courses_title}}</view>
+          <view class="curriculum-t">授课老师：{{item.courses_teacher}}</view>
+          <view class="curriculum-t">课时数量：{{item.classes.length}}课时</view>
+          <view class="curriculum-t">学习进度：{{item.per}}</view>
+        </view>
+      </view>
+      <view class="button" data-id="{{item.courses_id}}" data-title="{{item.courses_title}}" bindtap="content">
+        <button class="btn">继续学习</button>
+      </view>
+    </view>
+    <view class="order_none" wx:if="{{no.length <= 0 ? true:false}}">
+      <image src="/images/community.png" class="order_none_img" mode='widthFix'></image>
+      <text class="order_none_tex">哎呀,您还没有{{navItem[showItem-1]}}呢</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="curriculum" wx:for="{{yes}}" wx:key="id">
+      <view class="curriculum-header" data-id="{{item.courses_id}}" data-="" data-title="{{item.courses_title}}" bindtap="content">
+        <view class="curriculum-image">
+          <image src="{{item.courses_img}}" mode="widthFix"></image>
+        </view>
+        <view class="curriculum-boby">
+          <view class="curriculum-p">{{item.courses_title}}</view>
+          <view class="curriculum-t">授课老师：{{item.courses_teacher}}</view>
+          <view class="curriculum-t">课时数量：{{item.classes.length}}课时</view>
+          <view class="curriculum-t">学习进度：已完成</view>
+        </view>
+      </view>
+    </view>
+    <view class="order_none" wx:if="{{yes.length <= 0 ? true:false}}">
+      <image src="/images/community.png" class="order_none_img" mode='widthFix'></image>
+      <text class="order_none_tex">哎呀,您还没有{{navItem[showItem-1]}}呢</text>
+    </view>
+  </block>
+</view>
